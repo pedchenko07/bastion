@@ -18,7 +18,7 @@ class CreateRewievsTable extends Migration
             $table->string('email')->default(null)->nullable();
             $table->text('text')->default(null)->nullable();
             $table->integer('product_id')->default(0);
-            $table->date('date');
+            $table->date('date')->default(null);
             $table->tinyInteger('status')->default(0);
         });
     }
