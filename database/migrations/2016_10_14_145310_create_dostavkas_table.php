@@ -14,7 +14,7 @@ class CreateDostavkasTable extends Migration
     {
         Schema::create('dostavkas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->default(null)->nullable();
+            $table->string('name');
         });
     }
 

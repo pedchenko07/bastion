@@ -14,10 +14,10 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->default(null)->nullable();
-            $table->tinyInteger('status')->default(0);
-            $table->string('location')->default(null)->nullable();
-            $table->string('type')->default(null)->nullable();
+            $table->string('name');
+            $table->enum('status', [0,1])->default(0);
+            $table->string('location');
+            $table->string('type');
         });
     }
 
