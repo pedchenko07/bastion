@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSlidersTable extends Migration
+class CreateBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateSlidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('sliders', function (Blueprint $table) {
+        Schema::create('brands', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->default(null)->nullable();
-            $table->tinyInteger('status')->default(0);
-            $table->string('location')->default(null)->nullable();
-            $table->string('type')->default(null)->nullable();
+            $table->tinyinteger('parent_id')->default(0);
+            $table->string('img')->default(null)->nullable();
+            $table->text('text')->default(null)->nullable();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateSlidersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sliders');
+        Schema::drop('brands');
     }
 }
