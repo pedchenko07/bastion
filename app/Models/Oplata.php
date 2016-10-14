@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Oplata extends Model
 {
-    //
+    protected $table = 'oplatas';
 }
