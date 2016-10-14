@@ -12,7 +12,7 @@ class CreateRewievsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rewievs', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email');
@@ -30,6 +30,6 @@ class CreateRewievsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('rewievs');
+        Schema::drop('reviews');
     }
 }
