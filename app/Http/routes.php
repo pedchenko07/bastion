@@ -41,17 +41,23 @@ Route::auth();
 
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/', 'AdminController@index');
-        Route::get('/metrics', 'MetricsController@index');
-        Route::get('/informers', 'UserController@informer');
-        Route::get('/reviews', 'ReviewsController@index');
-        Route::get('/settings', 'SettingsController@index');
-        Route::get('/design', 'SettingsController@design');
-        Route::get('/user', 'UserController@index');
-        Route::get('/news', 'NewsController@index');
-        Route::get('/sliders', 'NewsController@sliders');
-        Route::get('/order', 'OrderController@index');
-        Route::get('/category', 'CategoryController@index');
+        Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
+        Route::get('metrics', ['as' => 'metrics.index', 'uses' => 'MetricsController@index']);
+        Route::group(['prefix' => 'informers'], function() {
+            Route::get('/', ['as' => 'user.informer', 'uses' => 'UserController@informer']);
+            Route::get('add', ['as' => 'user.informerAdd', 'uses' => 'UserController@informerAdd']);
+            Route::get('edit/{id?}', ['as' => 'user.informerEdit', 'uses' => 'UserController@informerEdit']);
+            Route::get('delete/{id?}', ['as' => 'user.informerDelete', 'uses' => 'UserController@informerDelete']);
+        });
+
+        Route::get('reviews', ['as' => 'reviews.index', 'uses' => 'ReviewsController@index']);
+        Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
+        Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);
+        Route::get('user', ['as' => 'user.index', 'uses' => 'UserController@index']);
+        Route::get('news', ['as' => 'news.index', 'uses' => 'NewsController@index']);
+        Route::get('sliders', ['as' => 'news.sliders', 'uses' => 'NewsController@sliders']);
+        Route::get('order', ['as' => 'order.index', 'uses' => 'OrderController@index']);
+        Route::get('category', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
     });
 
 });
