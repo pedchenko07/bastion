@@ -1,29 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
-    <!-- Styles -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{url('backend/style.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url('backend/colpick.css')}}" />
+    <title>Личный кабинет администратора интернет-магазина</title>
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -39,8 +21,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    В магазин
+                <a class="navbar-brand" href="{{ url('/admin/') }}">
+                    Админ панель
                 </a>
             </div>
 
@@ -49,8 +31,9 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
+                    <li><a href="{{ url('/') }}">В магазин</a></li>
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Ввойти</a></li>
+                        <li><a href="{{ url('/login') }}">Войти</a></li>
                         <li><a href="{{ url('/register') }}">Регистрация</a></li>
                     @else
                         <li class="dropdown">
@@ -67,13 +50,20 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-    @yield('menu')
+    <div class="karkas2">
+        @include('admin.includes.leftbar')
     @yield('content')
     </div>
-    <!-- JavaScripts -->
+
+    <script type="text/javascript" src="{{url('backend/js/jquery-1.7.2.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/custom.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/jquery-ui-1.9.2.custom.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/jquery.cookie.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/workscripts.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/colpick.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/ajaxupload.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>
