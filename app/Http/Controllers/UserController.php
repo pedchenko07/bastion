@@ -10,11 +10,25 @@ class UserController extends Controller
 {
     public function index()
     {
-        return __CLASS__;
+        return view('admin.users.index');
     }
 
     public function informer()
     {
-        return __METHOD__ ;
+        return view('admin.informers.index');
+    }
+
+    public function informerAdd()
+    {
+        return view('admin.informers.add');
+    }
+
+    public function informerEdit($id)
+    {
+        return view('admin.informers.add');
+    }
+    public function informerDelete($id)
+    {
+        return view('admin.informers.index');
     }
 }

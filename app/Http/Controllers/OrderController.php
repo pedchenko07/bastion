@@ -10,6 +10,6 @@ class OrderController extends Controller
 {
     public function index()
     {
-        return __CLASS__;
+        return view('admin.orders.index');
     }
 }

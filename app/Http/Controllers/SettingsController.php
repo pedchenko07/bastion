@@ -10,10 +10,10 @@ class SettingsController extends Controller
 {
     public function index()
     {
-        return __CLASS__;
+        return view('admin.settings.index');
     }
     public function design()
     {
-        return __CLASS__ . __METHOD__;
+        return view('admin.settings.design');
     }
 }
