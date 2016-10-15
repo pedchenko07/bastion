@@ -41,9 +41,17 @@ Route::auth();
 
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/', function () {
-            return view('admin.index');
-        });
+        Route::get('/', 'AdminController@index');
+        Route::get('/metrics', 'MetricsController@index');
+        Route::get('/informers', 'UserController@informer');
+        Route::get('/reviews', 'ReviewsController@index');
+        Route::get('/settings', 'SettingsController@index');
+        Route::get('/design', 'SettingsController@design');
+        Route::get('/user', 'UserController@index');
+        Route::get('/news', 'NewsController@index');
+        Route::get('/sliders', 'NewsController@sliders');
+        Route::get('/order', 'OrderController@index');
+        Route::get('/category', 'CategoryController@index');
     });
 
 });
