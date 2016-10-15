@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return \View::make('frontend/main');
 });
+
+Route::auth();
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/', function () {
+            return view('admin.index');
+        });
+    });
+
+});
+
+Route::get('/home', 'HomeController@index');
+
