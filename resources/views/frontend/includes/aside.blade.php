@@ -4,9 +4,9 @@
         <div class="box-content">
             <div class="box-category">
                 <ul class="menu">
-                    >
-                    <li><a href="?view=cat&amp;category="></a></li>
-
+                    @foreach($brands as $brand)
+                    <li><a href="">{{ $brand->name }}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>

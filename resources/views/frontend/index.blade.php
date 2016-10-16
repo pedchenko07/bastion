@@ -96,17 +96,17 @@
         }
     </script>
     <div id="banner0" class="banners row">
-
+        @foreach($brands as $brand)
         <div class="col-sm-6 banner-">
             <div class="banner-box">
-                <a class="clearfix" href="?view=cat&amp;category=">
+                <a class="clearfix" href="">
                     <img src="" alt="banner-" class="img-responsive"/>
-                    <div class="s-desc">123<br>
+                    <div class="s-desc">{{ $brand->name }}<br>
                         <span>Купить сейчас!</span></div>
                 </a>
             </div>
         </div>
-
+        @endforeach
     </div>
 
     <div id="myCarousel2" class="carousel slide" data-ride="carousel">

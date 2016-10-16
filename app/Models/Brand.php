@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     protected $table = 'brands';
+
+    public static function getAllBrands()
+    {
+        return self::all();
+    }
 }

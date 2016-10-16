@@ -11,29 +11,30 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
-Route::get('/category', function() {
-   return view('frontend.category');
-});
-Route::get('/product', function() {
-   return view('frontend.product');
-});
+Route::group(['prefix' => '/'], function() {
+    Route::get('/', 'SiteController@index');
 
-Route::get('/delivery', function() {
-   return view('frontend.delivery_payment');
-});
+    Route::get('/category', function() {
+        return view('frontend.category');
+    });
+    Route::get('/product', function() {
+        return view('frontend.product');
+    });
 
-Route::get('/reviews', function() {
-    return view('frontend.reviews');
-});
+    Route::get('/delivery', function() {
+        return view('frontend.delivery_payment');
+    });
 
-Route::get('/contacts', function() {
-    return view('frontend.contacts');
-});
-Route::get('/cart', function() {
-    return view('frontend.cart');
+    Route::get('/reviews', function() {
+        return view('frontend.reviews');
+    });
+
+    Route::get('/contacts', function() {
+        return view('frontend.contacts');
+    });
+    Route::get('/cart', function() {
+        return view('frontend.cart');
+    });
 });
 
 
