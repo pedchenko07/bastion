@@ -50,10 +50,15 @@
             </div>
         </div>
     </nav>
+    @if (\Auth::User())
     <div class="karkas2">
+
         @include('admin.includes.leftbar')
+        @endif
     @yield('content')
+        @if (\Auth::User())
     </div>
+    @endif
 
     <script type="text/javascript" src="{{url('backend/js/jquery-1.7.2.min.js')}}"></script>
     <script type="text/javascript" src="{{url('backend/js/custom.js')}}"></script>
