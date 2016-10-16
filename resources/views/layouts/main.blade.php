@@ -63,19 +63,20 @@
             </div>
         </div>
     </div>
-    @include('frontend.includes.footer')
-<script src="{{ asset('js/livesearch.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
-<script src="{{ asset('js/jquery.ui.totop.js') }}"></script>
-<script src="{{ asset('js/tmstickup.js') }}"></script>
-<script src="{{ asset('js/jquery.unveil.js') }}"></script>
-<script src="{{ asset('js/fancybox/jquery.fancybox.js') }}"></script>
-<script src="{{ asset('js/superfish.js') }}"></script>
-<script src="{{ asset('js/greensock/jquery.gsap.min.js') }}"></script>
-<script src="{{ asset('js/greensock/TimelineMax.min.js') }}"></script>
-<script src="{{ asset('js/greensock/TweenMax.min.js') }}"></script>
-<script src="{{ asset('js/greensock/jquery.scrollmagic.min.js') }}"></script>
 </div>
+
+@include('frontend.includes.footer')
+<script src="{{ asset('frontend/js/livesearch.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/script.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/jquery.easing.1.3.js') }}"></script>
+<script src="{{ asset('frontend/js/jquery.ui.totop.js') }}"></script>
+<script src="{{ asset('frontend/js/tmstickup.js') }}"></script>
+<script src="{{ asset('frontend/js/jquery.unveil.js') }}"></script>
+<script src="{{ asset('frontend/js/fancybox/jquery.fancybox.js') }}"></script>
+<script src="{{ asset('frontend/js/superfish.js') }}"></script>
+<script src="{{ asset('frontend/js/greensock/jquery.gsap.min.js') }}"></script>
+<script src="{{ asset('frontend/js/greensock/TimelineMax.min.js') }}"></script>
+<script src="{{ asset('frontend/js/greensock/TweenMax.min.js') }}"></script>
+<script src="{{ asset('frontend/js/greensock/jquery.scrollmagic.min.js') }}"></script>
 </body>
 </html>

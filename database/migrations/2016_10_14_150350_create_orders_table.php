@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->tinyInteger('dostavka_id');
             $table->tinyInteger('oplata_id');
             $table->enum('status', [0,1])->default(0);
-            $table->text('prim');
+            $table->text('prim')->default(NULL)->nullable();
         });
     }
 

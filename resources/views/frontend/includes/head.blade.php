@@ -6,30 +6,30 @@
 <meta name="description" content="Military Store"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<script src="{{ asset('js/jquery-2.1.1.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/common.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/owl.carousel.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/device.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/camera.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/jquery.zoom.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/jquery.elevateZoom-3.0.8.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/jquery-2.1.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/custom.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/common.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/owl.carousel.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/device.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/camera.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/jquery.zoom.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('frontend/js/jquery.elevateZoom-3.0.8.min.js') }}" type="text/javascript"></script>
 
-<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" media="screen"/>
-<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
-<link href="{{ asset('css/owl.carousel.css') }}" rel="stylesheet">
-<link href="{{ asset('css/magnificent.css') }}" rel="stylesheet">
-<link href="{{ asset('css/material-design.css') }}" rel="stylesheet">
-<link href="{{ asset('css/photoswipe.css') }}" rel="stylesheet">
-<link href="{{ asset('css/jquery.fancybox.css') }}" rel="stylesheet">
-<link href="{{ asset('css/jquery.bxslider.css') }}" rel="stylesheet">
-<link href="{{ asset('css/camera.css') }}" type="text/css" rel="stylesheet" media="screen"/>
-<link href="{{ asset('css/tm_newsletter-popup.css') }}" type="text/css" rel="stylesheet" media="screen"/>
-<link href="{{ asset('css/owl.carousel.css') }}" type="text/css" rel="stylesheet" media="screen"/>
-<link href="{{ asset('css/owl.transitions.css') }}" type="text/css" rel="stylesheet" media="screen"/>
-<link href="{{ asset('css/stylesheet.css') }}" rel="stylesheet">
-<link href="{{ asset('css/material-icons.css') }}" rel="stylesheet">
+<link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet" media="screen"/>
+<link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('frontend/css/owl.carousel.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/css/magnificent.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/css/material-design.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/css/photoswipe.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/css/jquery.fancybox.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/css/jquery.bxslider.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/css/camera.css') }}" type="text/css" rel="stylesheet" media="screen"/>
+<link href="{{ asset('frontend/css/tm_newsletter-popup.css') }}" type="text/css" rel="stylesheet" media="screen"/>
+<link href="{{ asset('frontend/css/owl.carousel.css') }}" type="text/css" rel="stylesheet" media="screen"/>
+<link href="{{ asset('frontend/css/owl.transitions.css') }}" type="text/css" rel="stylesheet" media="screen"/>
+<link href="{{ asset('frontend/css/stylesheet.css') }}" rel="stylesheet">
+<link href="{{ asset('frontend/css/material-icons.css') }}" rel="stylesheet">
 
 <!--[if lt IE 9]>
 <div style='clear:both;height:59px;padding:0 15px 0 15px;position:relative;z-index:10000;text-align:center;'>
