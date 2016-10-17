@@ -1,6 +1,5 @@
 @extends('layouts.admin-app')
 @section('content')
-
     <div class="content">
         <div class="metrics-content">
             <h1>Метрика</h1>
@@ -14,18 +13,20 @@
                     <td><b>Удалить</b></td>
                 </tr>
                 </thead>
+                @foreach($items as $item)
                 <tr>
-                    <td>ID</td>
-                    <td>NAME</td>
-                    <td>'Включён' : 'Выключен'</td>
+                    <td>{{$item->id}}</td>
+                    <td>{{$item->name}}</td>
+                    <td>{{($item->status?'Включён':'Выключен')}}</td>
                     <td>
-                        <a class="approve-review" href="?view=metrics&metric_approve=ID&status=STATUS"></a>
+                        <a class="approve-review" href="{{route('metrics.status',
+                        ['id' => $item->id, 'status' => $item->status])}}"></a>
                     </td>
-                    <td><a href="?view=metrics&metric_del=ID">х</a></td>
+                    <td><a href="{{route('metrics.delete', $item->id)}}">х</a></td>
                 </tr>
+                @endforeach
             </table>
-            <a href="?view=add_metric">Добавить метрику</a>
-            <a href="?view=add_metric">Добавить метрику</a>
+            <a href="{{route('metrics.add')}}">Добавить метрику</a>
         </div>
 
     </div> <!-- .content -->

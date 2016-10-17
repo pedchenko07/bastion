@@ -54,10 +54,11 @@
     <div class="karkas2">
 
         @include('admin.includes.leftbar')
-        @endif
-    @yield('content')
-        @if (\Auth::User())
+        @yield('content')
     </div>
+    @else
+
+        @yield('content')
     @endif
 
     <script type="text/javascript" src="{{url('backend/js/jquery-1.7.2.min.js')}}"></script>

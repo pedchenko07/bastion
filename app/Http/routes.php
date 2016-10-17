@@ -43,7 +43,13 @@ Route::auth();
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
-        Route::get('metrics', ['as' => 'metrics.index', 'uses' => 'MetricsController@index']);
+        Route::group(['prefix' => 'metrics'], function () {
+            Route::get('/', ['as' => 'metrics.index', 'uses' => 'MetricsController@index']);
+            Route::get('add', ['as' => 'metrics.add', 'uses' => 'MetricsController@add']);
+            Route::post('add', ['as' => 'metrics.save', 'uses' => 'MetricsController@save']);
+            Route::get('status/{id}/{status}', ['as' => 'metrics.status', 'uses' => 'MetricsController@status']);
+            Route::get('delete/{id}', ['as' => 'metrics.delete', 'uses' => 'MetricsController@delete']);
+        });
         Route::group(['prefix' => 'informers'], function() {
             Route::get('/', ['as' => 'user.informer', 'uses' => 'UserController@informer']);
             Route::get('add', ['as' => 'user.informerAdd', 'uses' => 'UserController@informerAdd']);
