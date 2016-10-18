@@ -14,18 +14,23 @@ class Metrics extends Model
         return self::all();
     }
 
+    public static function getActive()
+    {
+        return self::where('status', 1)->get();
+    }
+
     public static function create(array $attributes = [])
     {
-        return self::insertGetId($attributes);
+        return self::insert($attributes);
     }
 
     public static function editStatus($id, array $data)
     {
-        return DB::update('update metrics set status = ? where id = ?', [$data['status'], $id]);
+        return self::where('id', $id)->update($data);
     }
 
     public static function dell($id)
     {
-        return self::where('id', '=', $id)->delete();
+        return self::where('id', $id)->delete();
     }
 }

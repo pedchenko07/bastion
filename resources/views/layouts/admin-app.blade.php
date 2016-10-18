@@ -5,6 +5,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{url('backend/style.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url('backend/colpick.css')}}" />
+    <script type="text/javascript" src="{{url('backend/js/ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/jquery-1.7.2.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/custom.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/jquery-ui-1.9.2.custom.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/jquery.cookie.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/workscripts.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/colpick.js')}}"></script>
+    <script type="text/javascript" src="{{url('backend/js/ajaxupload.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
     <title>Личный кабинет администратора интернет-магазина</title>
 </head>
 <body id="app-layout">
@@ -61,15 +72,5 @@
         @yield('content')
     @endif
 
-    <script type="text/javascript" src="{{url('backend/js/jquery-1.7.2.min.js')}}"></script>
-    <script type="text/javascript" src="{{url('backend/js/custom.js')}}"></script>
-    <script type="text/javascript" src="{{url('backend/js/jquery-ui-1.9.2.custom.min.js')}}"></script>
-    <script type="text/javascript" src="{{url('backend/js/jquery.cookie.js')}}"></script>
-    <script type="text/javascript" src="{{url('backend/js/workscripts.js')}}"></script>
-    <script type="text/javascript" src="{{url('backend/js/colpick.js')}}"></script>
-    <script type="text/javascript" src="{{url('backend/js/ckeditor/ckeditor.js')}}"></script>
-    <script type="text/javascript" src="{{url('backend/js/ajaxupload.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
