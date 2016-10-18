@@ -12,7 +12,11 @@ class SiteController extends Controller
     public function index()
     {
         $brands = Brand::getAllBrands();
+        $metrics = \App\Models\Metrics::getActive();
 
-        return view('frontend.index', ['brands' =>$brands]);
+        return view('frontend.index', [
+            'brands'    =>  $brands,
+            'metrics'   =>  $metrics,
+        ]);
     }
 }

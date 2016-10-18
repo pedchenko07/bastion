@@ -56,12 +56,19 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('edit/{id?}', ['as' => 'user.informerEdit', 'uses' => 'UserController@informerEdit']);
             Route::get('delete/{id?}', ['as' => 'user.informerDelete', 'uses' => 'UserController@informerDelete']);
         });
+        Route::group(['prefix' => 'news'], function () {
+            Route::get('/', ['as' => 'news.index', 'uses' => 'NewsController@index']);
+            Route::get('add', ['as' => 'news.add', 'uses' => 'NewsController@addNews']);
+            Route::post('add', ['as' => 'news.save', 'uses' => 'NewsController@saveNews']);
+            Route::get('edit/{id}', ['as' => 'news.edit', 'uses' => 'NewsController@editNews']);
+            Route::post('edit/{id?}', ['as' => 'news.update', 'uses' => 'NewsController@updateNews']);
+            Route::get('delete/{id}', ['as' => 'news.delete', 'uses' => 'NewsController@deleteNews']);
+        });
 
         Route::get('reviews', ['as' => 'reviews.index', 'uses' => 'ReviewsController@index']);
         Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
         Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);
         Route::get('user', ['as' => 'user.index', 'uses' => 'UserController@index']);
-        Route::get('news', ['as' => 'news.index', 'uses' => 'NewsController@index']);
         Route::get('sliders', ['as' => 'news.sliders', 'uses' => 'NewsController@sliders']);
         Route::get('order', ['as' => 'order.index', 'uses' => 'OrderController@index']);
         Route::get('category', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
