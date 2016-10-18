@@ -20,6 +20,7 @@ class CreatePagesTable extends Migration
             $table->string('description');
             $table->tinyInteger('position')->default(0);
             $table->text('text');
+            $table->timestamps();
         });
     }
 

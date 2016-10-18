@@ -31,6 +31,7 @@ class CreateSettingsTable extends Migration
             $table->string('keywords');
             $table->string('adsense');
             $table->string('money')->default('руб.');
+            $table->timestamps();
         });
     }
 

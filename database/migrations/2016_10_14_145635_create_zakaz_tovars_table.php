@@ -20,6 +20,7 @@ class CreateZakazTovarsTable extends Migration
             $table->integer('quantity')->unsigned();
             $table->string('name');
             $table->float('price');
+            $table->timestamps();
         });
     }
 

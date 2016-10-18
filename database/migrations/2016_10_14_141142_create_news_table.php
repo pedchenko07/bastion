@@ -21,6 +21,7 @@ class CreateNewsTable extends Migration
             $table->text('anons');
             $table->text('text');
             $table->date('date');
+            $table->timestamps();
         });
     }
 

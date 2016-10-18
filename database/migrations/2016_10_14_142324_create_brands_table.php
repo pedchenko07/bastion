@@ -18,6 +18,7 @@ class CreateBrandsTable extends Migration
             $table->tinyinteger('parent_id')->default(0);
             $table->string('img')->default(NULL)->nullable();
             $table->text('text')->default(NULL)->nullable();
+            $table->timestamps();
         });
     }
 

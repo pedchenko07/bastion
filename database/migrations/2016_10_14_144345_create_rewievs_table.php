@@ -20,6 +20,7 @@ class CreateRewievsTable extends Migration
             $table->integer('product_id')->default(0);
             $table->date('date');
             $table->enum('status', [0,1])->default(0);
+            $table->timestamps();
         });
     }
 
