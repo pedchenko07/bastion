@@ -18,6 +18,7 @@ class CreateImageToSlidersTable extends Migration
             $table->integer('slider_id');
             $table->string('image');
             $table->string('link');
+            $table->timestamps();
         });
     }
 

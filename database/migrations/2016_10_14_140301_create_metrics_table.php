@@ -19,6 +19,7 @@ class CreateMetricsTable extends Migration
             $table->string('name', 55);
             $table->text('code');
             $table->tinyInteger('status');
+            $table->timestamps();
         });
     }
 

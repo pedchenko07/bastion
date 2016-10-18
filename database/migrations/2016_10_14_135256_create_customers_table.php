@@ -21,6 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('adres');
             $table->string('comment');
             $table->tinyInteger('payment_type');
+            $table->timestamps();
         });
     }
 

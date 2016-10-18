@@ -21,6 +21,7 @@ class CreateLinksTable extends Migration
             $table->string('keywords');
             $table->string('description');
             $table->text('text');
+            $table->timestamps();
         });
     }
 

@@ -15,6 +15,7 @@ class CreateOplatasTable extends Migration
         Schema::create('oplatas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->timestamps();
         });
     }
 

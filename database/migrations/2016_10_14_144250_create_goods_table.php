@@ -30,6 +30,7 @@ class CreateGoodsTable extends Migration
             $table->float('price')->default(0);
             $table->date('date');
             $table->string('img_slide')->nullable()->default(NULL);
+            $table->timestamps();
         });
     }
 
