@@ -64,8 +64,11 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post('edit/{id?}', ['as' => 'news.update', 'uses' => 'NewsController@updateNews']);
             Route::get('delete/{id}', ['as' => 'news.delete', 'uses' => 'NewsController@deleteNews']);
         });
-
-        Route::get('reviews', ['as' => 'reviews.index', 'uses' => 'ReviewsController@index']);
+        Route::group(['prefix' => 'reviews'], function () {
+            Route::get('/', ['as' => 'reviews.index', 'uses' => 'ReviewsController@index']);
+            Route::get('status/{id}', ['as' => 'reviews.status', 'uses' => 'ReviewsController@status']);
+            Route::get('delete/{id}', ['as' => 'reviews.delete', 'uses' => 'ReviewsController@delete']);
+        });
         Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
         Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);
         Route::get('user', ['as' => 'user.index', 'uses' => 'UserController@index']);
