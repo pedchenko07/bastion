@@ -43,6 +43,8 @@ Route::auth();
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
+        Route::get('/add', ['as' => 'admin.add_page', 'uses' => 'AdminController@addPage']);
+        Route::post('/add', ['as' => 'admin.save', 'uses' => 'AdminController@savePage']);
         Route::group(['prefix' => 'metrics'], function () {
             Route::get('/', ['as' => 'metrics.index', 'uses' => 'MetricsController@index']);
             Route::get('add', ['as' => 'metrics.add', 'uses' => 'MetricsController@add']);
