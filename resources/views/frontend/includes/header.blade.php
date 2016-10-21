@@ -17,7 +17,7 @@
             <div class="col-sm-12 block-logo">
                 <div id="logo" class="logo">
                     <a href="/">
-                        <img src="" title="kobra1.com.ua" alt="kobra1.com.ua" class="img-responsive"/>
+                        <p>123</p>
                     </a>
                 </div>
                 <form method="GET" class="search-form">

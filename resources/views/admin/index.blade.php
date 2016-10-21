@@ -23,8 +23,8 @@
                 <td style="width:360px" class="name_page">{{ $page->title }}</td>
                 <td class="position" style="width:80px">{{ $page->position }}</td>
                 <td style="width:160px">
-                    <a href="" class="edit-button">изменить</a>&nbsp; | &nbsp;
-                    <a href="" class="zakaz-del">удалить</a>
+                    <a href="{{route('admin.edit_page',$page->id)}}" class="edit-button">изменить</a>&nbsp; | &nbsp;
+                    <a href="{{ route('admin.delete_page', $page->id) }}" class="zakaz-del">удалить</a>
                 </td>
             </tr>
             @endforeach

@@ -17,4 +17,19 @@ class Pages extends Model
     {
         return self::all();
     }
+
+    public static function getPageById($id)
+    {
+        return self::whereId($id)->first();
+    }
+
+    public static function updatePage($id,$data)
+    {
+        return self::whereId($id)->update($data);
+    }
+
+    public static function deleteById($id)
+    {
+        return self::whereId($id)->delete();
+    }
 }
