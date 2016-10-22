@@ -16,38 +16,45 @@
                     </p>
                 </div>
                 <h2>Написать отзыв</h2>
+                @if(isset($msg))
+                    <h4>{{$msg}}</h4>
+                @endif
+
                 <form method="POST" class="form-group">
+                    {{ csrf_field() }}
                     <div class="form-group required">
                         <label class="control-label" for="name">Имя</label>
-                        <input type="text" name="name" value="" placeholder="Имя" id="name" class="form-control">
+                        <input type="text" name="name" value="" placeholder="Имя" id="name" class="form-control" required>
                     </div>
                     <div class="form-group required">
                         <label class="control-label" for="email">Email</label>
-                        <input type="email" name="email" value="" placeholder="Email" id="email" class="form-control">
+                        <input type="email" name="email" value="" placeholder="Email" id="email" class="form-control" required>
                     </div>
                     <div class="form-group required">
                         <label class="control-label" for="comment">Отзыв</label>
-                        <textarea type="text" name="comment" placeholder="Отзыв" id="comment" class="form-control"></textarea>
+                        <textarea type="text" name="text" placeholder="Отзыв" id="comment" class="form-control" required></textarea>
                     </div>
-                    <input type="hidden" value="not-product" name="review">
+                    <input type="hidden" value="0" name="product_id">
+                    <input type="hidden" value="0" name="review_id">
                     <input type="submit" class="btn btn-primary" value="Отправить"/>
                 </form>
                 <div class="reviews-holder">
+                    @foreach ($reviews as $review)
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <span class="pull-left"></span>
-                                <span class="pull-right"></span>
+                                <span class="pull-left">{{$review->name}}</span>
+                                <span class="pull-right">{{$review->date}}</span>
                             </h3>
                         </div>
                         <div class="panel-body">
                             <p>
-
+                                {{$review->text}}
                             </p>
                         </div>
                     </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>
