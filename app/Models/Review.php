@@ -10,7 +10,7 @@ class Review extends Model
 
     public static function getAll()
     {
-        return self::orderBy('created_at', 'desc')->get();
+        return self::orderBy('status')->orderBy('created_at', 'desc')->get();
     }
 
     public static function deleteReviewById($id)
@@ -23,5 +23,13 @@ class Review extends Model
         $review = self::whereId($id)->first();
         $review->status = ($review->status)? 0 : 1;
         return $review->update();
+    }
+
+    /**
+     * @return int count of reviews which has status non publicated
+     */
+    public static function noneActivated()
+    {
+        return self::where('status', 0)->count();
     }
 }

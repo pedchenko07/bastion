@@ -30,7 +30,7 @@
             <li><img src="{{url('backend/images/setting-menu.png')}}" /> <a href="{{route('settings.index')}}">Настройки</a></li>
             <li><img src="{{url('backend/images/design-menu.png')}}" /> <a href="{{route('settings.design')}}">Дизайн</a></li>
             <li><img src="{{url('backend/images/add.png')}}" /> <a href="{{route('news.sliders')}}">Слайдеры</a></li>
-            <li><img src="{{url('backend/images/review.png')}}" /> <a href="{{route('reviews.index')}}">Отзывы</a></li>
+            <li><img src="{{url('backend/images/review.png')}}" /> <a href="{{route('reviews.index')}}">Отзывы ({{\App\Models\Review::noneActivated()}})</a></li>
             <li><img src="{{url('backend/images/statistics.png')}}" /> <a href="{{route('metrics.index')}}">Метрика</a></li>
         </ul>
     </div> <!-- .leftBar -->
