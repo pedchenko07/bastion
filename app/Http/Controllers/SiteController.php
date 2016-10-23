@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
 {
@@ -16,7 +17,7 @@ class SiteController extends Controller
     {
         $this->data['brands'] = Brand::getAllBrands();
         $this->data['metrics'] = \App\Models\Metrics::getActive();
-        $this->data['reviews'] = Review::getAllSite();
+        $this->data['user'] = Auth::user();
     }
 
     public function index()
@@ -26,6 +27,8 @@ class SiteController extends Controller
 
     public function reviews()
     {
+
+        $this->data['reviews'] = Review::getAllProductById();
         return view('frontend.reviews', $this->data);
     }
 
@@ -34,12 +37,16 @@ class SiteController extends Controller
         $data = $request->except('_token');
         $data['date'] = $data['created_at'] = Carbon::now();
         if(Review::create($data)) {
-            $this->data['msg'] = 'Спасибо за Ваш отзыв, после модерации, отзыв будет опубликован!';
+            $msg = 'Спасибо за Ваш отзыв, после модерации, отзыв будет опубликован!';
+            $success = true;
         } else {
-            $this->data['msg'] = 'Извините, но не получилось добавить отзыв, попробуйте позже.';
+            $msg = 'Извините, но не получилось добавить отзыв, попробуйте позже.';
+            $success = true;
         }
-        return view('frontend.reviews', $this->data);
 
-
+        return json_encode([
+            'success' => $success,
+            'msg' => $msg
+        ]);
     }
 }

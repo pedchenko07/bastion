@@ -654,6 +654,9 @@ html[lang="ru"] a.addthis_button_tweet {
 .panel.panel-default .panel-collapse {
     color: #988d66;
     background: #fff; }
+.panel.panel-default.answ {
+    margin-left: 50px;
+}
 .panel.panel-default .panel-collapse label, .panel.panel-default .panel-collapse input, .panel.panel-default .panel-collapse button, .panel.panel-default .panel-collapse select, .panel.panel-default .panel-collapse textarea {
     color: #988d66; }
 .panel.panel-default .panel-collapse input.btn {

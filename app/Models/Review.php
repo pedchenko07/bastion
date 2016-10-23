@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Review extends Model
 {
@@ -13,15 +14,24 @@ class Review extends Model
         return self::orderBy('status')->orderBy('created_at', 'desc')->get();
     }
 
-    public static function getAllSite()
+    public static function getAllProductById($id = 0)
     {
-        return self::where('product_id', 0)->where('status', 1)
-            ->orderBy('date', 'desc')->get();
+        $items = self::where('product_id', $id)->where('status', 1)->where('review_id', 0)
+            ->orderBy('date')->get();
+        foreach ($items as $item) {
+            $item->getSubReview();
+        }
+        return $items;
+    }
+
+    public static function countProductReviews($id = 0)
+    {
+        return self::where('product_id', $id)->where('status', 1)->count();
     }
 
     public static function deleteById($id)
     {
-        return self::where('id', $id)->delete();
+        return self::where('id', $id)->orWhere('review_id',$id)->delete();
     }
 
     public static function changeStatusById($id)
@@ -47,5 +57,12 @@ class Review extends Model
     {
         $this->status = ($this->status)? 0 : 1;
         return $this;
+    }
+
+    public function getSubReview()
+    {
+        $subReview = self::where('status', 1)->where('review_id', $this->id)
+            ->orderBy('date')->get();
+        $this->subReview = (count($subReview))?$subReview:NULL;
     }
 }

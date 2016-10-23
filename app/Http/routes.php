@@ -17,9 +17,7 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/category', function() {
         return view('frontend.category');
     });
-    Route::get('/product', function() {
-        return view('frontend.product');
-    });
+
 
     Route::get('/delivery', function() {
         return view('frontend.delivery_payment');
@@ -34,7 +32,9 @@ Route::group(['prefix' => '/'], function() {
         return view('frontend.cart');
     });
 });
-
+Route::group(['prefix' => 'product'], function() {
+    Route::get('/{id?}', ['as' => 'item.index', 'uses' => 'ItemController@index']);
+});
 Route::group(['prefix' => 'reviews'], function() {
     Route::get('/', ['as' => 'site.reviews.index', 'uses' => 'SiteController@reviews']);
     Route::post('/', ['as' => 'site.reviews.save', 'uses' => 'SiteController@reviewsSave']);
