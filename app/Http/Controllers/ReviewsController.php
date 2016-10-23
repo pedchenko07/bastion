@@ -31,7 +31,7 @@ class ReviewsController extends Controller
 
     public function delete($id)
     {
-        $result = Review::deleteReviewById($id);
+        $result = Review::deleteById($id);
 
         if ($result) {
             Session::flash('success', 'Отзыв успешно удален');
