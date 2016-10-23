@@ -13,17 +13,15 @@
 
 Route::group(['prefix' => '/'], function() {
     Route::get('/', ['as' => 'site.index', 'uses' => 'SiteController@index']);
+    Route::get('page/{id}', ['as' => 'site.page', 'uses' => 'SiteController@page']);
 
     Route::get('/category', function() {
         return view('frontend.category');
     });
 
-
     Route::get('/delivery', function() {
         return view('frontend.delivery_payment');
     });
-
-
 
     Route::get('/contacts', function() {
         return view('frontend.contacts');
