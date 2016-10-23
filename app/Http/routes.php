@@ -100,11 +100,14 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('oplata/delete/{id}',
                 ['as' => 'settings.oplata.delete', 'uses' => 'SettingsController@oplataDelete']);
         });
+        Route::group(['prefix' => 'category'], function() {
+            Route::get('/', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
+        });
+        Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
         Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);
         Route::get('user', ['as' => 'user.index', 'uses' => 'UserController@index']);
         Route::get('sliders', ['as' => 'news.sliders', 'uses' => 'NewsController@sliders']);
         Route::get('order', ['as' => 'order.index', 'uses' => 'OrderController@index']);
-        Route::get('category', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
     });
 
 });
