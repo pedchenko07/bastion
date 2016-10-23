@@ -51,9 +51,9 @@
                     <nav id="top-links" class="nav">
                         <ul class="list-inline">
                             <li><a href="{{route('site.index')}}"><i class="fa fa-home"></i><span>Главная</span></a></li>
-
-                            <li><a href="?view=page&page_id="></a></li>
-
+                            @foreach($pages as $page)
+                            <li><a href="{{ route('site.page', $page->id) }}">{{ $page->title }}</a></li>
+                            @endforeach
                             <li><a href="{{ route('site.reviews.index') }}">Отзывы о сайте</a></li>
                             <li><a href="?view=contacts">Контакты</a></li>
                             <li class="li-cart"><i class="material-icons">shopping_cart</i>

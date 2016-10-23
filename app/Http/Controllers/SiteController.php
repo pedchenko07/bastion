@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Review;
+use App\Models\Pages;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +18,7 @@ class SiteController extends Controller
         $this->data['brands'] = Brand::getAllBrands();
         $this->data['metrics'] = \App\Models\Metrics::getActive();
         $this->data['user'] = Auth::user();
+        $this->data['pages'] = Pages::getAll();
     }
 
     public function index()
@@ -48,5 +49,11 @@ class SiteController extends Controller
             'success' => $success,
             'msg' => $msg
         ]);
+    }
+
+    public function page($id)
+    {
+        $this->data['page'] = Pages::getPageById($id);
+        return view('frontend.page', $this->data);
     }
 }
