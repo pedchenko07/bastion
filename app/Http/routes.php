@@ -102,6 +102,8 @@ Route::group(['middleware' => ['auth']], function() {
         });
         Route::group(['prefix' => 'category'], function() {
             Route::get('/', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
+            Route::get('add', ['as' => 'category.add', 'uses' => 'CategoryController@addCategory']);
+            Route::post('add', ['as' => 'category.create', 'uses' => 'CategoryController@createCategory']);
         });
         Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
         Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);
