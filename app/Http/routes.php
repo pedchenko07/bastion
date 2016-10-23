@@ -44,11 +44,11 @@ Route::auth();
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
-        Route::get('add', ['as' => 'admin.add_page', 'uses' => 'AdminController@addPage']);
-        Route::post('add', ['as' => 'admin.save', 'uses' => 'AdminController@savePage']);
-        Route::get('edit/{id}', ['as' => 'admin.edit_page', 'uses' => 'AdminController@editPage']);
-        Route::post('edit/{id?}', ['as' => 'admin.update_page', 'uses' => 'AdminController@updatePage']);
-        Route::get('delete/{id}', ['as' => 'admin.delete_page', 'uses' => 'AdminController@deletePage']);
+        Route::get('add', ['as' => 'admin.add', 'uses' => 'AdminController@add']);
+        Route::post('add', ['as' => 'admin.save', 'uses' => 'AdminController@save']);
+        Route::get('edit/{id}', ['as' => 'admin.edit', 'uses' => 'AdminController@edit']);
+        Route::post('edit/{id?}', ['as' => 'admin.update', 'uses' => 'AdminController@update']);
+        Route::get('delete/{id}', ['as' => 'admin.delete', 'uses' => 'AdminController@delete']);
         Route::group(['prefix' => 'metrics'], function () {
             Route::get('/', ['as' => 'metrics.index', 'uses' => 'MetricsController@index']);
             Route::get('add', ['as' => 'metrics.add', 'uses' => 'MetricsController@add']);

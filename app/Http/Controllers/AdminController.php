@@ -17,12 +17,12 @@ class AdminController extends Controller
         return view('admin.index',['pages' => $pages]);
     }
 
-    public function addPage(Request $request)
+    public function add(Request $request)
     {
         return view('admin.page.add_page');
     }
 
-    public function savePage(Request $request)
+    public function save(Request $request)
     {
         $messages = [
             'title.required' => 'Поле название страницы, обязательное для заполнения!',
@@ -35,7 +35,7 @@ class AdminController extends Controller
         ],$messages);
 
         if($validator->fails()) {
-            return redirect()->route('admin.add_page')
+            return redirect()->route('admin.add')
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -55,14 +55,14 @@ class AdminController extends Controller
         return redirect()->route('admin.index')->with($mess);
     }
 
-    public function editPage($id)
+    public function edit($id)
     {
         $page = Pages::getPageById($id);
 
         return view('admin.page.add_page', ['page' =>$page]);
     }
 
-    public function updatePage(Request $request)
+    public function update(Request $request)
     {
         $messages = [
             'title.required' => 'Поле название страницы, обязательное для заполнения!',
@@ -96,7 +96,7 @@ class AdminController extends Controller
         return redirect()->route('admin.index')->with($mess);
     }
 
-    public function deletePage($id)
+    public function delete($id)
     {
         if(Pages::deleteById($id)) {
             $mess= ['message' => 'Страница удалена!'];
