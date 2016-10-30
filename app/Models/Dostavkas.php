@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Oplata extends Model
+class Dostavkas extends Model
 {
-    protected $table = 'oplatas';
+    protected $table = 'dostavkas';
+
 
     public static function createNew(array $data)
     {
@@ -36,4 +37,5 @@ class Oplata extends Model
     {
         return self::select('id', 'name')->find($id);
     }
+
 }

@@ -75,7 +75,31 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('status/{id}', ['as' => 'reviews.status', 'uses' => 'ReviewsController@status']);
             Route::get('delete/{id}', ['as' => 'reviews.delete', 'uses' => 'ReviewsController@delete']);
         });
-        Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
+        Route::group(['prefix' => 'settings'], function () {
+            Route::get('/', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
+            Route::get('edit', ['as' => 'settings.edit', 'uses' => 'SettingsController@editSettings']);
+            Route::post('edit', ['as' => 'settings.editSave', 'uses' => 'SettingsController@saveSettings']);
+            Route::get('delivery', ['as' => 'settings.delivery', 'uses' => 'SettingsController@delivery']);
+            Route::post('delivery',
+                ['as' => 'settings.delivery.new', 'uses' => 'SettingsController@deliveryNew']);
+
+            Route::get('delivery/edit/{id}',
+                ['as' => 'settings.delivery.edit', 'uses' => 'SettingsController@deliveryEdit']);
+            Route::post('delivery/edit/{id}',
+                ['as' => 'settings.delivery.update', 'uses' => 'SettingsController@deliveryUpdate']);
+            Route::get('delivery/delete/{id}',
+                ['as' => 'settings.delivery.delete', 'uses' => 'SettingsController@deliveryDelete']);
+            Route::get('oplata', ['as' => 'settings.oplata', 'uses' => 'SettingsController@oplata']);
+            Route::post('oplata',
+                ['as' => 'settings.oplata.new', 'uses' => 'SettingsController@oplataNew']);
+
+            Route::get('oplata/edit/{id}',
+                ['as' => 'settings.oplata.edit', 'uses' => 'SettingsController@oplataEdit']);
+            Route::post('oplata/edit/{id}',
+                ['as' => 'settings.oplata.update', 'uses' => 'SettingsController@oplataUpdate']);
+            Route::get('oplata/delete/{id}',
+                ['as' => 'settings.oplata.delete', 'uses' => 'SettingsController@oplataDelete']);
+        });
         Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);
         Route::get('user', ['as' => 'user.index', 'uses' => 'UserController@index']);
         Route::get('sliders', ['as' => 'news.sliders', 'uses' => 'NewsController@sliders']);
