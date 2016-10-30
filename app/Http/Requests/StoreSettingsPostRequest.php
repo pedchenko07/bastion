@@ -30,4 +30,13 @@ class StoreSettingsPostRequest extends Request
             'baseimg'   =>  'mimes:jpeg,png',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name_shop.required' => 'Название магазина обязательно должно быть заполнено',
+            'email'  => 'Введите корректный email, например myEmail@domain.com',
+            'mimes'  => 'Файл должен быть разрешения .jpg или .png'
+        ];
+    }
 }
