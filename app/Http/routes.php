@@ -104,6 +104,10 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
             Route::get('add', ['as' => 'category.add', 'uses' => 'CategoryController@addCategory']);
             Route::post('add', ['as' => 'category.create', 'uses' => 'CategoryController@createCategory']);
+            Route::get('edit/{id}',['as' => 'category.edit', 'uses' => 'CategoryController@editCategory']);
+            Route::post('edit/{id?}', ['as' => 'category.update', 'uses' => 'CategoryController@updateCategory']);
+            Route::get('delete/{id}', ['as' => 'category.delete', 'uses' => 'CategoryController@deleteCategory']);
+            Route::get('subCat/{id}', ['as' => 'category.subCat', 'uses' => 'CategoryController@updateSubCategory']);
         });
         Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
         Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);

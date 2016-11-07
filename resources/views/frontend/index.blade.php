@@ -1,25 +1,25 @@
 @extends('layouts.main')
 @section('content')
 
-        <!--<div class="catalog-index">
-				<h1>Лидеры продаж</h1>
+        {{--<div class="catalog-index">--}}
+				{{--<h1>Лидеры продаж</h1>--}}
 
 
-        <div class="product-index">
-            <h2><a href="?view=product&amp;goods_id="></a></h2>
-					<div class="product-table-img">
-					<a href="?view=product&amp;goods_id="><img src="" alt="" /></a>
-					</div>
-					<p>Цена :  <span></span> руб.</p>
-					<a href="?view=addtocart&amp;goods_id=" class="dobavit-cart">Добавить в корзину</a>
-				</div>
+        {{--<div class="product-index">--}}
+            {{--<h2><a href="?view=product&amp;goods_id="></a></h2>--}}
+					{{--<div class="product-table-img">--}}
+					{{--<a href="?view=product&amp;goods_id="><img src="" alt="" /></a>--}}
+					{{--</div>--}}
+					{{--<p>Цена :  <span></span> руб.</p>--}}
+					{{--<a href="?view=addtocart&amp;goods_id=" class="dobavit-cart">Добавить в корзину</a>--}}
+				{{--</div>--}}
 
-        <div class="clr"></div>
+        {{--<div class="clr"></div>--}}
 
 
-        <p class="no-goods">Здесь товаров пока нет!</p>
+        {{--<p class="no-goods">Здесь товаров пока нет!</p>--}}
 
-        </div> -->
+        {{--</div>--}}
 <div id="content" class="col-sm-9" xmlns="http://www.w3.org/1999/html"><script>
         jQuery(function(){
             jQuery('#camera_wrap_0').camera({
@@ -100,7 +100,7 @@
         <div class="col-sm-6 banner-">
             <div class="banner-box">
                 <a class="clearfix" href="">
-                    <img src="" alt="banner-" class="img-responsive"/>
+                    <img src="{{ asset('frontend/img/brands') . '/' .$brand->img }} " alt="banner-" class="img-responsive"/>
                     <div class="s-desc">{{ $brand->name }}<br>
                         <span>Купить сейчас!</span></div>
                 </a>

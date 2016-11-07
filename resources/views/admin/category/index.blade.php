@@ -3,7 +3,12 @@
 
     <div class="content">
         <h2>Список категорий</h2>
-
+        @if(Session::has('message'))
+            <h3 class="success">{{Session::get('message')}}</h3>
+        @endif
+        @if(Session::has('error'))
+            <h3 class="error">{{Session::get('error')}}</h3>
+        @endif
         <a href="{{ route('category.add') }}" class="admin-button">Добавить категорию</a>
         <table class="tabl" cellspacing="1">
             <tr>
@@ -17,8 +22,8 @@
                 <td>{{ $brand->id }}</td>
                 <td class="name_page">{{ $brand->name }}</td>
                 <td>
-                    <a href="" class="edit-button">изменить</a>&nbsp; | &nbsp;
-                    <a href="" class="zakaz-del">удалить</a>
+                    <a href="{{ route('category.edit',$brand->id) }}" class="edit-button">изменить</a>&nbsp; | &nbsp;
+                    <a href="{{ route('category.delete',$brand->id) }}" class="zakaz-del">удалить</a>
                 </td>
             </tr>
             @endforeach

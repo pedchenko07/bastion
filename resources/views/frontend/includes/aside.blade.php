@@ -38,12 +38,12 @@
         <div class="box-content">
             <div class="reibert">
                 <a href="http://reibert.info/threads/Средство-для-самозащиты-Кобра-1Н.368664/">
-                    <img src="/views/kobra/img/reibert.gif" width="160">
+                    <img src="{{ asset('frontend/img/reibert.gif') }}" width="160">
                 </a>
             </div>
             <div class="kharkov_forum">
                 <a href="http://www.kharkovforum.com/showthread.php?t=2942281">
-                    <img src="/views/kobra/img/kharkov_forum.png" width="160">
+                    <img src="{{ asset('frontend/img/kharkov_forum.png') }}" width="160">
                 </a>
             </div>
         </div>

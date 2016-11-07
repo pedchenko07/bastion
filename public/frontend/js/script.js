@@ -5,7 +5,7 @@ function include(scriptUrl) {
 
 /* Easing library
  ========================================================*/
-include('views/kobra/js/jquery.easing.1.3.js');
+include('js/jquery.easing.1.3.js');
 
 /* ToTop
  ========================================================*/

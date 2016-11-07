@@ -6,21 +6,22 @@
             <li><img src="{{url('backend/images/page-menu.png')}}" /> <a href="{{route('admin.index')}}">Основные страницы</a></li>
             <li><img src="{{url('backend/images/inform-menu.png')}}" /> <a href="{{route('user.informer')}}">Информеры</a></li>
             <li><img src="{{url('backend/images/cat-menu.png')}}" /> <a href="{{route('category.index')}}">Основные категории</a>
-
             <!-- Аккордеон -->
+
                 <ul class="nav-catalog" id="accordion">
-                    <li><h3><a style="font-size: 13px;" href="#">FIRST CATEGORY</a></h3>
+                    @foreach($brands as $brand)
+                    <li><h3><a style="font-size: 13px;" href="#">{{ $brand->name }}</a></h3>
                         <ul>
-                            <li>- <a href="?view=cat&amp;category=">Все модели</a></li>
-                            <li>- <a href="?view=cat&amp;category=">SUB CATEGORY</a></li>
+                            <li>- <a href="">Все модели</a></li>
+                            @if(count($brand->subBrands) > 0)
+                                @foreach($brand->subBrands as $sub)
+                            <li>- <a href="{{ route("category.subCat",$sub->id) }}">{{ $sub->name }}</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </li>
-                    <li><h3><a style="font-size: 13px;" href="#">FIRST CATEGORY</a></h3>
-                        <ul>
-                            <li>- <a href="?view=cat&amp;category=">Все модели</a></li>
-                            <li>- <a href="?view=cat&amp;category=">SUB CATEGORY</a></li>
-                        </ul>
-                    </li>
+                    @endforeach
+
                 </ul>
             <!-- Аккордеон -->
             </li>
