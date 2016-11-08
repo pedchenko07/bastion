@@ -12,7 +12,7 @@
                     @foreach($brands as $brand)
                     <li><h3><a style="font-size: 13px;" href="#">{{ $brand->name }}</a></h3>
                         <ul>
-                            <li>- <a href="">Все модели</a></li>
+                            <li>- <a href="{{ route('category.all', $brand->id) }}">Все модели</a></li>
                             @if(count($brand->subBrands) > 0)
                                 @foreach($brand->subBrands as $sub)
                             <li>- <a href="{{ route("category.subCat",$sub->id) }}">{{ $sub->name }}</a></li>

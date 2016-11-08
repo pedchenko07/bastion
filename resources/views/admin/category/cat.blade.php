@@ -18,7 +18,7 @@
             </p>
         </div>
 
-        <a href="?view=add_product&amp;brand_id=" class="admin-button">Добавить продукт</a>
+        <a href="{{ route('product.add') }}" class="admin-button">Добавить продукт</a>
 
 
 

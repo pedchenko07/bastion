@@ -14,6 +14,10 @@ class CategoryController extends Controller
     private $imageRepositories;
     const PATH_IMG = "frontend/img/brands/";
 
+    /**
+     * CategoryController constructor.
+     * @param ImageRepositories $imageRepositories
+     */
     public function __construct(ImageRepositories $imageRepositories)
     {
         $this->imageRepositories = $imageRepositories;
@@ -121,5 +125,11 @@ class CategoryController extends Controller
     {
         $brand = Brand::getBrandById($id);
         return view('admin.category.cat', ['brands' => $this->data['brands'], 'brand' => $brand]);
+    }
+
+    public function categoryAll($id)
+    {
+        $brand = Brand::getBrandById($id);
+        return view('admin.category.cat',['brands' => $this->data['brands'], 'brand' => $brand]);
     }
 }
