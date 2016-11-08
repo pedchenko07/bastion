@@ -100,11 +100,24 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('oplata/delete/{id}',
                 ['as' => 'settings.oplata.delete', 'uses' => 'SettingsController@oplataDelete']);
         });
+        Route::group(['prefix' => 'category'], function() {
+            Route::get('/', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
+            Route::get('add', ['as' => 'category.add', 'uses' => 'CategoryController@addCategory']);
+            Route::post('add', ['as' => 'category.create', 'uses' => 'CategoryController@createCategory']);
+            Route::get('edit/{id}',['as' => 'category.edit', 'uses' => 'CategoryController@editCategory']);
+            Route::post('edit/{id?}', ['as' => 'category.update', 'uses' => 'CategoryController@updateCategory']);
+            Route::get('delete/{id}', ['as' => 'category.delete', 'uses' => 'CategoryController@deleteCategory']);
+            Route::get('subCat/{id}', ['as' => 'category.subCat', 'uses' => 'CategoryController@updateSubCategory']);
+            Route::get('category/all/{id}', ['as' => 'category.all', 'uses' => 'CategoryController@categoryAll']);
+        });
+        Route::group(['prefix' => 'product'], function() {
+            Route::get('add',['as' => 'product.add', 'uses' => 'ProductController@addProduct']);
+        });
+        Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
         Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);
         Route::get('user', ['as' => 'user.index', 'uses' => 'UserController@index']);
         Route::get('sliders', ['as' => 'news.sliders', 'uses' => 'NewsController@sliders']);
         Route::get('order', ['as' => 'order.index', 'uses' => 'OrderController@index']);
-        Route::get('category', ['as' => 'category.index', 'uses' => 'CategoryController@index']);
     });
 
 });

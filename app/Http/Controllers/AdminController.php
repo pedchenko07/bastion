@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Pages;
 use Illuminate\Http\Request;
 use Validator;
@@ -9,12 +10,18 @@ use App\Http\Requests;
 
 class AdminController extends Controller
 {
+    private $data = [];
+
+    public function __construct()
+    {
+        $this->data['pages'] = Pages::getAll();
+        $this->data['brands'] = Brand::getBrandsAndSubBrands();
+    }
 
     public function index()
     {
-        $pages = Pages::getAll();
-
-        return view('admin.index',['pages' => $pages]);
+//        dd($this->data);
+        return view('admin.index',$this->data);
     }
 
     public function addPage(Request $request)
