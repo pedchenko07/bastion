@@ -69,4 +69,21 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     *
+     * закомментируй метод showRegistrationForm() и register(), чтобы получить доступ к
+     * регистрации на сайте @todo если понадобится регистрация
+     *
+*@return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function showRegistrationForm(){
+        return redirect('login');
+    }
+
+    public function register(){
+        return redirect('login');
+    }
+
+
 }

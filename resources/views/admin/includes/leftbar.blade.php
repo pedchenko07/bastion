@@ -27,7 +27,7 @@
             </li>
             <li><img src="{{url('backend/images/news-menu.png')}}" /> <a href="{{route('news.index')}}">Новости</a></li>
             <li><img src="{{url('backend/images/order-menu.png')}}" /> <a href="{{route('order.index')}}">Заказы</a></li>
-            <li><img src="{{url('backend/images/user-menu.png')}}" /> <a href="{{route('user.index')}}">Пользователи</a></li>
+            {{--<li><img src="{{url('backend/images/user-menu.png')}}" /> <a href="{{route('user.index')}}">Пользователи</a></li>--}}
             <li><img src="{{url('backend/images/setting-menu.png')}}" /> <a href="{{route('settings.index')}}">Настройки</a></li>
             <li><img src="{{url('backend/images/design-menu.png')}}" /> <a href="{{route('settings.design')}}">Дизайн</a></li>
             <li><img src="{{url('backend/images/add.png')}}" /> <a href="{{route('news.sliders')}}">Слайдеры</a></li>
