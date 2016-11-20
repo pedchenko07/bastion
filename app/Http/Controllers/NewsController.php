@@ -14,6 +14,7 @@ class NewsController extends Controller
     protected $msg = false;
     public function index($msg = false)
     {
+        $data['brands'] = $this->data['brands'];
         if (Session::has('success')) {
             $data['success'] = Session::get('success');
         }
@@ -32,6 +33,7 @@ class NewsController extends Controller
         $data['anons'] = '';
         $data['text'] = '';
         $data['error'] = false;
+        $data['brands'] = $this->data['brands'];
 
         return view('admin.news.addNews', $data);
     }
@@ -47,6 +49,7 @@ class NewsController extends Controller
         if ($data['title'] == '' || $data['keywords'] == '' || $data['anons'] == '' ||
         $data['description'] == '' || $data['text'] == '') {
             $data['error'] = 'Вы не заполнили форму';
+            $data['brands'] = $this->data['brands'];
             return view('admin.news.addNews', $data);
         }
         $data['date'] = Carbon::now();
@@ -81,7 +84,7 @@ class NewsController extends Controller
         $data['text'] = $result->text;
         $data['error'] = false;
         $data['id'] = $id;
-
+        $data['brands'] = $this->data['brands'];
         return view('admin.news.addNews', $data);
     }
 
@@ -97,6 +100,7 @@ class NewsController extends Controller
         if ($data['title'] == '' || $data['keywords'] == '' || $data['anons'] == '' ||
             $data['description'] == '' || $data['text'] == '') {
             $data['error'] = 'Вы не заполнили форму';
+            $data['brands'] = $this->data['brands'];
             return view('admin.news.addNews', $data);
         }
         $data['date'] = Carbon::now();
@@ -111,6 +115,7 @@ class NewsController extends Controller
 
     public function sliders()
     {
-        return view('admin.news.sliders');
+        $data['brands'] = $this->data['brands'];
+        return view('admin.news.sliders', $data);
     }
 }

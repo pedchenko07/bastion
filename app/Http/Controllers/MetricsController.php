@@ -10,18 +10,16 @@ class MetricsController extends Controller
 {
     public function index()
     {
-        $data = \App\Models\Metrics::getAll();
-        return view('admin.metrics.index', ['items' => $data]);
+        $this->data['items'] = \App\Models\Metrics::getAll();
+        return view('admin.metrics.index', $this->data);
     }
 
     public function add()
     {
-        $data = [
-            'empty' => false,
-            'name' => '',
-            'code' => ''
-        ];
-        return view('admin.metrics.add', $data);
+        $this->data['empty'] = false;
+        $this->data['name'] = '';
+        $this->data['code'] = '';
+        return view('admin.metrics.add', $this->data);
     }
 
     public function save(Request $request)

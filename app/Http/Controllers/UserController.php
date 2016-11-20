@@ -17,20 +17,20 @@ class UserController extends Controller
 
     public function informer()
     {
-        return view('admin.informers.index');
+        return view('admin.informers.index', $this->data);
     }
 
     public function informerAdd()
     {
-        return view('admin.informers.add');
+        return view('admin.informers.add', $this->data);
     }
 
     public function informerEdit($id)
     {
-        return view('admin.informers.add');
+        return view('admin.informers.add', $this->data);
     }
     public function informerDelete($id)
     {
-        return view('admin.informers.index');
+        return view('admin.informers.index', $this->data);
     }
 }
