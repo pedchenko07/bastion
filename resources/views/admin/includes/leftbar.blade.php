@@ -27,9 +27,9 @@
             </li>
             <li><img src="{{url('backend/images/news-menu.png')}}" /> <a href="{{route('news.index')}}">Новости</a></li>
             <li><img src="{{url('backend/images/order-menu.png')}}" /> <a href="{{route('order.index')}}">Заказы</a></li>
-            {{--<li><img src="{{url('backend/images/user-menu.png')}}" /> <a href="{{route('user.index')}}">Пользователи</a></li>--}}
+            <li><img src="{{url('backend/images/user-menu.png')}}" /> <a href="{{route('user.index')}}">Пользователи</a></li>
             <li><img src="{{url('backend/images/setting-menu.png')}}" /> <a href="{{route('settings.index')}}">Настройки</a></li>
-            <li><img src="{{url('backend/images/design-menu.png')}}" /> <a href="{{route('settings.design')}}">Дизайн</a></li>
+            {{--<li><img src="{{url('backend/images/design-menu.png')}}" /> <a href="{{route('settings.design')}}">Дизайн</a></li>--}}
             <li><img src="{{url('backend/images/add.png')}}" /> <a href="{{route('news.sliders')}}">Слайдеры</a></li>
             <li><img src="{{url('backend/images/review.png')}}" /> <a href="{{route('reviews.index')}}">Отзывы ({{\App\Models\Review::noneActivated()}})</a></li>
             <li><img src="{{url('backend/images/statistics.png')}}" /> <a href="{{route('metrics.index')}}">Метрика</a></li>

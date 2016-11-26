@@ -29,8 +29,7 @@
                 <td><a href="?view=edit_user&amp;user_id=customer_id" class="edit-button">изменить</a>&nbsp; | &nbsp;<a href="?view=del_user&amp;user_id=customer_id" class="zakaz-del">удалить</a></td>
             </tr>
         </table>
-        {{--paginator--}}
         <a href="" class="admin-button">Добавить пользователя</a>
-    </div> <!-- .content -->
+    </div>
 
 @endsection
