@@ -40,9 +40,11 @@
                         @foreach($brands as $cat)
                             @if(isset($brand->id) && $cat->id != $brand->id) <!--Категория не может быть под категорией-->
                                 <option value="{{ $cat->id }}">{{ $cat->name }}</option>
-                            @else
-                                @continue
-                            @endif
+                                @elseif(empty($brand))
+                                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                @else
+                                    @continue
+                                @endif
                         @endforeach
                     </select>
                 </td>

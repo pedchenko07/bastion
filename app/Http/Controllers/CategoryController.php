@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Repositories\ImageRepositories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Validator;
 use App\Http\Requests;
 
@@ -112,6 +113,12 @@ class CategoryController extends Controller
 
     public function deleteCategory($id)
     {
+        try {
+            $brand = Brand::getBrandById($id);
+            $this->imageRepositories->deleteImg($brand->img,self::PATH_IMG);
+        } catch(\Exception $e) {
+            Log::info($e->getMessage());
+        }
         if(Brand::deleteById($id)) {
             $mess= ['message' => 'Категория удалена!'];
         } else {

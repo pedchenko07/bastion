@@ -36,7 +36,7 @@ class Brand extends Model
         if(count($subBrands) > 0) {
             return false;
         }
-        return $obj->deleteImg()->delete(); //Удаляем категорию и изображение
+        return $obj->delete(); //Удаляем категорию и изображение
     }
 
     public static function getBrandsAndSubBrands()
@@ -46,18 +46,6 @@ class Brand extends Model
             $brand->getSubBrands();
         }
         return $brands;
-    }
-
-    private function deleteImg()
-    {
-        if(!is_null($this->img)) {
-            if(File::exists(\App\Http\Controllers\CategoryController::PATH_IMG . $this->img)) {
-                if(File::delete(\App\Http\Controllers\CategoryController::PATH_IMG . $this->img)) {
-                    return $this;
-                }
-            }
-        }
-        return $this;
     }
 
     private function getSubBrands()
