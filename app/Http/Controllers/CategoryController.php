@@ -60,7 +60,7 @@ class CategoryController extends Controller
         if(!empty($request->file('baseimg'))) {
             try{
                 $brand['img'] = $this->imageRepositories->saveImg($request->file('baseimg'), self::PATH_IMG);
-            } catch (\Exeption $e) {
+            } catch (\Exception $e) {
                 return redirect()->back()
                     ->withErrors($e)
                     ->withInput();

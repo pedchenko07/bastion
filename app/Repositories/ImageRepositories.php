@@ -9,12 +9,16 @@ class ImageRepositories
 {
     const PATH_IMG = "frontend/img/default/";
 
-    public function saveImg($file,$path =  self::PATH_IMG)
+    public function saveImg($file,$path =  self::PATH_IMG,$name = null)
     {
-        $fileName = str_random(6) . '.' .$file->getClientOriginalExtension();
+        if(is_null($name)) {
+            $name = str_random(6);
+        }
+        $fileName = $name . '.' .$file->getClientOriginalExtension();
         if(!file_exists(public_path($path))) {
             mkdir($path,0755);
         }
+
         $file->move(public_path($path), $fileName);
 
         return $fileName;

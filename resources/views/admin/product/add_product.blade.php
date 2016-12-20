@@ -3,7 +3,15 @@
 
     <div class="content">
         <h2>Добавление товара</h2>
-
+        @if (count($errors) > 0)
+            <div class="error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <form action="" method="post" enctype="multipart/form-data">
 
@@ -14,7 +22,7 @@
                 </tr>
                 <tr>
                     <td class="add-edit-txt">Цена:</td>
-                    <td> <input class="head-text" id="input-money" type="text" name="price" style="text-align:right;" value="" /></td>
+                    <td> <input class="head-text" id="input-money" type="number" name="price" style="text-align:right;" value="" /></td>
                 </tr>
                 <tr>
                     <td class="add-edit-txt">Ключевые слова</td>
@@ -29,12 +37,15 @@
                     <td>
                         <select class="select-inf" name="category" multiple="" size="10" style="height: auto;">
                             @foreach($brands as $brand)
-                            <option disabled=""></option>
-
-                            <option  value="">&nbsp;&nbsp;- </option>
-
-
-                            <option  value=""></option>
+                                @if(count($brand->subBrands) > 0)
+                                    <option disabled="">{{ $brand->name }}</option>
+                                        @foreach($brand->subBrands as $sub)
+                                            <option  value="{{ $sub->id }}" @if($sub->id == $activeBrand->id) selected @endif>&nbsp;&nbsp;- {{ $sub->name }}</option>
+                                        @endforeach
+                                @else
+                                    <option  value="{{ $brand->id }}" @if($brand->id == $activeBrand->id) selected @endif>{{ $brand->name }}</option>
+                                @endif
+                            @endforeach
                         </select>
                     </td>
                 </tr>
@@ -48,7 +59,8 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <textarea class="anons-text" name="anons">
+                        <textarea class="anons-text" name="anons"></textarea>
+                    </td>
                 </tr>
                 <tr>
                     <td>Подробное описание:</td>
@@ -88,14 +100,10 @@
                         <input type="radio" name="visible" value="0" /> Нет</td>
                 </tr>
             </table>
-
+            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <input type="submit" value="Сохранить" class="admin-button" />
         </form>
 
     </div> <!-- .content -->
-    </div> <!-- .content-main -->
-    </div> <!-- .karkas -->
-    </body>
-    </html>
 
 @endsection
