@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     private $data;
     private $imageRepositories;
-    const GOOD_IMG = "frontend/img/product/productID_";
+    const GOOD_IMG = "frontend/img/productID_";
 
     public function __construct(ImageRepositories $imageRepositories)
     {
@@ -60,13 +60,22 @@ class ProductController extends Controller
 
         $product = Goods::create($data);
         $baseimg = $request->file('baseimg');
-        $result = true;
+        $galleryimg = $request->file('galleryimg');
+
         if(isset($baseimg) && !empty($baseimg)) {
             $img = $this->imageRepositories->saveImg($baseimg,self::GOOD_IMG . $product->id,$product->id);
-            $result = Goods::update(['baseimg' => $img]);
+            Goods::updateBaseImg($product->id,$img);
         }
 
-        if($result) {
+        if(isset($galleryimg[0]) && !empty($galleryimg)) {
+            foreach($galleryimg as $key => $val) {
+                $galleryName[] = $this->imageRepositories->saveImg($val,self::GOOD_IMG . $product->id, $product->id . '_' . $key );
+            }
+            
+            Goods::updateGalleryImg($product->id,$galleryName = implode("|", $galleryName));
+        }
+        
+        if($product) {
             $mess= ['message' => "Продукт добавлен!"];
         } else {
             $mess= ['error' => 'Ошибка в БД, повторите попытку!'];

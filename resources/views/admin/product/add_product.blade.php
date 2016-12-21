@@ -40,10 +40,21 @@
                                 @if(count($brand->subBrands) > 0)
                                     <option disabled="">{{ $brand->name }}</option>
                                         @foreach($brand->subBrands as $sub)
-                                            <option  value="{{ $sub->id }}" @if($sub->id == $activeBrand->id) selected @endif>&nbsp;&nbsp;- {{ $sub->name }}</option>
+                                            <option
+                                                    value="{{ $sub->id }}"
+                                                    @if($sub->id == $activeBrand->id || $brand->id == $activeBrand->id)
+                                                        selected
+                                                    @endif>
+                                                &nbsp;&nbsp;- {{ $sub->name }}
+                                            </option>
                                         @endforeach
                                 @else
-                                    <option  value="{{ $brand->id }}" @if($brand->id == $activeBrand->id) selected @endif>{{ $brand->name }}</option>
+                                    <option
+                                            value="{{ $brand->id }}"
+                                            @if($brand->id == $activeBrand->id)
+                                                selected
+                                            @endif>{{ $brand->name }}
+                                    </option>
                                 @endif
                             @endforeach
                         </select>
