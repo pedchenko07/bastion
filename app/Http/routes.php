@@ -108,11 +108,13 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post('edit/{id?}', ['as' => 'category.update', 'uses' => 'CategoryController@updateCategory']);
             Route::get('delete/{id}', ['as' => 'category.delete', 'uses' => 'CategoryController@deleteCategory']);
             Route::get('subCat/{id}', ['as' => 'category.subCat', 'uses' => 'CategoryController@updateSubCategory']);
-            Route::get('all/{id}', ['as' => 'category.all', 'uses' => 'CategoryController@categoryAll']);
+//            Route::get('all/{id}', ['as' => 'category.all', 'uses' => 'CategoryController@categoryAll']);
         });
         Route::group(['prefix' => 'product'], function() {
-            Route::get('add/{id}',['as' => 'product.add', 'uses' => 'ProductController@addProduct']);
+            Route::get('add/{brandId}/{productId?}',['as' => 'product.add', 'uses' => 'ProductController@addProduct']);
             Route::post('add/{id?}',['as' => 'product.create', 'uses' => 'ProductController@create']);
+            Route::post('add/{brandId}/{productId}', ['as' => 'product.update', 'uses' => 'ProductController@update']);
+            Route::get('delete/{id}', ['as' => 'product.delete', 'uses' => 'ProductController@delete']);
         });
         Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
         Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);

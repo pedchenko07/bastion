@@ -8,18 +8,16 @@ class Goods extends Model
 {
     protected $table = 'goods';
 
-    protected $fillable = ['name', 'price', 'keywords', 'country', 'goods_brandid', 'anons','content', 'new','hits','sale',
+    protected $fillable = ['name', 'price', 'keywords', 'country', 'brand_id', 'anons','content', 'new','hits','sale',
     'no_goods', 'visible'];
-
-    public static function updateBaseImg($id,$imgName)
+    
+    public static function getGoodById($id)
     {
-        return self::whereId($id)
-            ->update(['img' => $imgName]);
+        return self::whereId($id)->first();
     }
-
-    public static function updateGalleryImg($id,$name)
+    
+    public static function updateGood($id,$data)
     {
-        return self::whereId($id)
-            ->update(['img_slide' => $name]);
+        return self::whereId($id)->update($data);
     }
 }

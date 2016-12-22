@@ -131,12 +131,10 @@ class CategoryController extends Controller
     public function updateSubCategory($id)
     {
         $brand = Brand::getBrandById($id);
-        return view('admin.category.cat', ['brands' => $this->data['brands'], 'brand' => $brand]);
+        $goods = $brand->goods;
+        $count = 0;
+//        dd($goods);
+        return view('admin.category.cat', ['brands' => $this->data['brands'], 'brand' => $brand, 'goods' => $goods, 'count' => $count]);
     }
 
-    public function categoryAll($id)
-    {
-        $brand = Brand::getBrandById($id);
-        return view('admin.category.cat',['brands' => $this->data['brands'], 'brand' => $brand]);
-    }
 }

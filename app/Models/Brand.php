@@ -54,4 +54,9 @@ class Brand extends Model
             ->get();
 
     }
+
+    public function goods()
+    {
+        return $this->hasMany('App\Models\Goods');
+    }
 }
