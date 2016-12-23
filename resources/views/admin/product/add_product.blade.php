@@ -142,7 +142,7 @@
                 <tr>
                     <td>Показывать:</td>
                     <td>
-                        <input type="radio" name="visible" value="1" @if(isset($good) && $good->visible == 1) checked  @endif /> Да <br />
+                        <input type="radio" name="visible" value="1" checked=""/> Да <br />
                         <input type="radio" name="visible" value="0" @if(isset($good) && $good->visible == 0) checked  @endif /> Нет
                     </td>
                 </tr>

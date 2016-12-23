@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Goods;
 use App\Repositories\Imageable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Validator;
 use App\Http\Requests;
 
@@ -101,28 +102,34 @@ class ProductController extends Controller
             try {
                 $this->imageRepositories->deleteImg($good->img,self::GOOD_IMG . $good->id . '/');
             } catch(\Exception $e) {
-
+                Log::info($e->getMessage());
             }
         }
 
-        if(!is_null($good->img_slide[0])) {
+        if(!is_null($good->img_slide)) {
             try {
-                foreach ($good->img_slide as $slide)
-                $this->imageRepositories->deleteImg($slide,self::GOOD_IMG . $good->id . '/');
+                $image = explode("|", $good->img_slide);
+                foreach ($image as $img) {
+                    $this->imageRepositories->deleteImg($img,self::GOOD_IMG . $good->id . '/');
+                }
             } catch(\Exception $e) {
-
+                Log::info($e->getMessage());
             }
-        } else {
+        }
+
+        if(file_exists(public_path(self::GOOD_IMG . $good->id))) {
             rmdir(public_path(self::GOOD_IMG . $good->id));
         }
+
         $brandId = $good->brand_id;
 
-//        if($good->delete) {
-//            $mess= ['message' => "Продукт удален!"];
-//        } else {
-//            $mess= ['error' => 'Ошибка в БД, повторите попытку!'];
-//        }
-//        return redirect()->route('category.subCat', $brandId)->with($mess);
+        if($good->delete()) {
+            $mess= ['message' => "Продукт удален!"];
+        } else {
+            $mess= ['error' => 'Ошибка в БД, повторите попытку!'];
+        }
+
+        return redirect()->route('category.subCat', $brandId)->with($mess);
     }
 
     public static function update(Request $request,$brandId,$goodId)
@@ -163,6 +170,7 @@ class ProductController extends Controller
         } else {
             $mess= ['error' => 'Ошибка в БД, повторите попытку!'];
         }
+
         return redirect()->route('category.subCat', $data['brand_id'])->with($mess);
     }
     
