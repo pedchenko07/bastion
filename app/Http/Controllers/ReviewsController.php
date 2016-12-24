@@ -12,10 +12,8 @@ class ReviewsController extends Controller
 {
     public function index()
     {
-        $reviews = Review::getAll();
-        return view('admin.reviews.index', [
-            'reviews' => $reviews,
-        ]);
+        $this->data['reviews'] = Review::getAll();
+        return view('admin.reviews.index', $this->data);
     }
 
     public function status($id)
