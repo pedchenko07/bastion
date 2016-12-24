@@ -115,8 +115,18 @@ Route::group(['middleware' => ['auth']], function() {
         });
         Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
         Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);
-        Route::get('user', ['as' => 'user.index', 'uses' => 'UserController@index']);
-        Route::post('user/save', ['as' => 'user.save', 'uses' => 'UserController@saveNewEmail']);
+        Route::group(['prefix' => 'user'], function() {
+            Route::get('/', ['as' => 'user.index', 'uses' => 'UserController@index']);
+//            Route::post('save', ['as' => 'user.save', 'uses' => 'UserController@saveNewEmail']);
+            Route::get('{id}/edit', ['as' => 'user.edit', 'uses' => 'UserController@edit']);
+            Route::post('{id}/update', ['as' => 'user.update', 'uses' => 'UserController@updateUser']);
+            Route::post('save', ['as' => 'user.save', 'uses' => 'UserController@saveUser']);
+            Route::get('add', ['as' => 'user.add', 'uses' => 'UserController@add']);
+            Route::post('add', ['as' => 'user.new.save', 'uses' => 'UserController@saveNewUser']);
+            Route::get('{id}/delete', ['as' => 'user.delete', 'uses' => 'UserController@delete']);
+
+
+        });
         Route::get('sliders', ['as' => 'news.sliders', 'uses' => 'NewsController@sliders']);
         Route::get('order', ['as' => 'order.index', 'uses' => 'OrderController@index']);
     });
