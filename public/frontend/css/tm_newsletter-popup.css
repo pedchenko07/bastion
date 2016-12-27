@@ -1,0 +1,80 @@
+#tm-newsletter-popup-form:before, #tm-newsletter-popup-form:after {
+    display: table;
+    content: "";
+    line-height: 0; }
+#tm-newsletter-popup-form:after {
+    clear: both; }
+
+.newsletter-popup-wrap {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    background: rgba(50, 46, 34, 0.8);
+    padding-top: 100px;
+}
+.newsletter-popup {
+    position: relative;
+    margin: 0 auto;
+    background-color: #877d62;
+    background-repeat: no-repeat;
+}
+.newsletter-popup:before, .newsletter-popup:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.newsletter-popup:after {
+    clear: both;
+}
+.newsletter-popup .box-content {
+    text-align: center;
+}
+.newsletter-popup-close-btn {
+    background: none;
+    outline: none;
+    border: none;
+    position: absolute;
+    right: 12px;
+    top: 9px;
+    font-size: 31px;
+    line-height: 31px;
+}
+.newsletter-popup .logo img {
+    display: inline-block; }
+.newsletter-popup .tm-login-form {
+    position: relative;
+    margin-top: 18px;
+}
+.newsletter-popup .tm-login-form input {
+    float: left;
+    box-sizing: border-box;
+}
+.newsletter-popup .tm-login-form:before, .newsletter-popup .tm-login-form:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.newsletter-popup .tm-login-form:after {
+    clear: both;
+}
+.newsletter-popup-btn {
+    margin-top: 0;
+    border: none;
+    outline: none;
+    display: inline-block;
+    box-sizing: border-box;
+}
+.newsletter-popup .newsletter-error, .newsletter-popup .newsletter-success {
+    position: absolute;
+    top: 100%;
+}
+
+@media (max-width: 767px) {
+    .newsletter-popup-wrap {
+        display: none !important;
+    }
+}
