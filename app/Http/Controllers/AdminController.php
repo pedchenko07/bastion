@@ -26,7 +26,7 @@ class AdminController extends Controller
 
     public function addPage(Request $request)
     {
-        return view('admin.page.add_page');
+        return view('admin.page.add_page', $this->data);
     }
 
     public function savePage(Request $request)
@@ -64,9 +64,9 @@ class AdminController extends Controller
 
     public function editPage($id)
     {
-        $page = Pages::getPageById($id);
+        $this->data['page'] = Pages::getPageById($id);
 
-        return view('admin.page.add_page', ['page' =>$page]);
+        return view('admin.page.add_page', $this->data);
     }
 
     public function updatePage(Request $request)

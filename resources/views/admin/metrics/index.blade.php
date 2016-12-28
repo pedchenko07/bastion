@@ -22,7 +22,7 @@
                         <a class="approve-review" href="{{route('metrics.status',
                         ['id' => $item->id, 'status' => $item->status])}}"></a>
                     </td>
-                    <td><a href="{{route('metrics.delete', $item->id)}}">х</a></td>
+                    <td><a class="remove-review" href="{{route('metrics.delete', $item->id)}}">х</a></td>
                 </tr>
                 @endforeach
             </table>

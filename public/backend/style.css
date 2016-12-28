@@ -849,3 +849,6 @@ border-radius:3px;
     text-indent: -9999px;
     background: url(images/ok-btn.png) no-repeat;
 }
+.new-user-form td {
+	padding: 5px 10px;
+}

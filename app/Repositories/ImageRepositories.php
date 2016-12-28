@@ -12,7 +12,7 @@ class ImageRepositories
     {
         $fileName = str_random(6) . '.' .$file->getClientOriginalExtension();
         if(!file_exists(public_path($path))) {
-            mkdir($path,0766);
+            mkdir($path,0755);
         }
         $file->move(public_path($path), $fileName);
 
