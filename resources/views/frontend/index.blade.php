@@ -99,7 +99,7 @@
         @foreach($brands as $brand)
         <div class="col-sm-6 banner-">
             <div class="banner-box">
-                <a class="clearfix" href="">
+                <a class="clearfix" href="{{ route('site.category',$brand->id) }}">
                     <img src="{{ asset('frontend/img/brands') . '/' .$brand->img }} " alt="banner-" class="img-responsive"/>
                     <div class="s-desc">{{ $brand->name }}<br>
                         <span>Купить сейчас!</span></div>
