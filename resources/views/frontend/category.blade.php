@@ -6,18 +6,12 @@
 
         <div id="content" class="col-sm-9">
             <ul class="breadcrumb">
-
-                <a href="">Главная</a> / <a href="?view=cat&amp;category="></a> / <span></span>
-
-
-
+                <a href="{{ route('site.index') }}">Главная</a> / <a href="{{route('site.category',$brand->id)}}">{{ $brand->name }}</a> / <span></span>
             </ul> <!-- .kroshka -->
-            <h2></h2>
+            <h2>{{ $brand->name }}</h2>
             <div class="row">
                 <div class="col-sm-10">
-                    <p class="category-text">
-
-                    </p>
+                    <p class="category-text">{{ $brand->text }}</p>
                 </div>
             </div>
             <div class="product-filter clearfix">
@@ -34,27 +28,27 @@
                 </div>
             </div>
             <div class="row block-grid">
-
+            @foreach($goods as $good)
                 <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="product-thumb product-category">
-                        <div class="image">
-                            <a class="lazy lazy-loaded" style="padding-bottom: 100%" href="?view=product&goods_id=">
-                                <img alt="" title="photos/" class="img-responsive" src="baseimg/">
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <div class="price"></div>
-                            <div class="name"><a href="?view=product&goods_id="></a></div>
-                            <div class="description-small">...</div>
-                            <div class="description">...</div>
-                            <div class="cart-button" id="">
-                                <a class="btn btn-add" href="?view=addtocart&amp;goods_id=" class="dobavit-cart2"><i class="material-icons">shopping_cart</i>Купить</a>
+                        <div class="product-thumb product-category">
+                            <div class="image">
+                                <a class="lazy lazy-loaded" style="padding-bottom: 100%" href="">
+                                    <img alt="" title="" class="img-responsive" src="{{$good->img !== 'no_image.jpg' ? asset('frontend/img/productID_' . $good->id . '/' . $good->img) : asset('frontend/img/' . $good->img)}}">
+                                </a>
                             </div>
+                            <div class="caption">
+                                <div class="price">{{ $good->price }} руб.</div>
+                                <div class="name"><a href="">{{ $good->name }}</a></div>
+                                <div class="description-small">{{ substr($good->anons,0,100) }} ...</div>
+                                <div class="description">{!! substr($good->content,0,300) !!} ... </div>
+                                <div class="cart-button" id="">
+                                    <a class="btn btn-add" href="" class="dobavit-cart2"><i class="material-icons">shopping_cart</i>Купить</a>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
                         </div>
-                        <div class="clear"></div>
-                    </div>
                 </div>
-
+            @endforeach
             </div>
             <div class="category-clear"></div>
         </div>

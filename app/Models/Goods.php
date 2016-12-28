@@ -9,6 +9,7 @@ class Goods extends Model
     protected $table = 'goods';
 
     const GOOD_IMG = "frontend/img/productID_";
+    const VISIBLE = 1;
 
     protected $fillable = ['name', 'price', 'keywords', 'country', 'brand_id', 'anons','content', 'new','hits','sale',
     'no_goods', 'visible'];
@@ -26,5 +27,10 @@ class Goods extends Model
     public static function getGoodsByBrandIds($ids)
     {
         return self::whereIn('brand_id',$ids)->get();
+    }
+
+    public static function getGoodsByBrandIdsOn($ids)
+    {
+        return self::whereIn('brand_id',$ids)->whereVisible(self::VISIBLE)->get();
     }
 }

@@ -5,7 +5,7 @@
             <div class="box-category">
                 <ul class="menu">
                     @foreach($brands as $brand)
-                    <li><a href="">{{ $brand->name }}</a></li>
+                    <li><a href="{{ route('site.category',$brand->id) }}">{{ $brand->name }}</a></li>
                     @endforeach
                 </ul>
             </div>

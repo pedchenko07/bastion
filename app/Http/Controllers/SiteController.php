@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Goods;
 use App\Models\Review;
 use App\Models\Pages;
 use Carbon\Carbon;
@@ -55,5 +56,20 @@ class SiteController extends Controller
     {
         $this->data['page'] = Pages::getPageById($id);
         return view('frontend.page', $this->data);
+    }
+
+    public function category($id)
+    {
+        $this->data['brand'] = Brand::getBrandById($id);
+        $ids = [];
+        if(!$this->data['brand']->children->isEmpty()) {
+            foreach($this->data['brand']->children as $val) {
+                array_push($ids,$val->id);
+            }
+        }
+        array_push($ids,$this->data['brand']->id);
+        $this->data['goods'] = Goods::getGoodsByBrandIdsOn($ids);
+        
+        return view('frontend.category',$this->data);
     }
 }

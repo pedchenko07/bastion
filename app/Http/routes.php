@@ -30,6 +30,11 @@ Route::group(['prefix' => '/'], function() {
         return view('frontend.cart');
     });
 });
+
+Route::group(['prefix' => 'category'], function() {
+    Route::get('/{id}', ['as' => 'site.category', 'uses' => 'SiteController@category']);
+});
+
 Route::group(['prefix' => 'product'], function() {
     Route::get('/{id?}', ['as' => 'item.index', 'uses' => 'ItemController@index']);
 });
