@@ -477,7 +477,7 @@ text-shadow:none;
 	background-color:#d8d8d8 !important;
 	}	
 	
-tr.ui-state-highlight,tr.ui-state-highlight1,{ 
+tr.ui-state-highlight,tr.ui-state-highlight1{
 	background-color:#ffeded !important;
 	 border:1px solid #765858;
 }

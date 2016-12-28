@@ -19,7 +19,7 @@ class CreateGoodsTable extends Migration
             $table->string('keywords');
             $table->string('country');
             $table->string('img')->default('no_image.jpg');
-            $table->tinyInteger('goods_brandid')->unsigned();
+            $table->tinyInteger('brand_id')->unsigned();
             $table->text('anons');
             $table->text('content');
             $table->enum('visible', [0,1])->default(1);
