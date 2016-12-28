@@ -20,8 +20,8 @@ class ImageRepositories implements Imageable
         }
         $img = Img::make($file);
 
-        if(!is_null($flag)) {
-            $img->save(public_path($path) . '/' . $fileName);
+        if(is_null($flag)) {
+            $img->resize(400, 200)->save(public_path($path) . '/' . $fileName);
         } else {
             $img->resize(200, 200)->save(public_path($path) . '/' . $fileName);
         }

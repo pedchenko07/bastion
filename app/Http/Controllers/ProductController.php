@@ -73,7 +73,7 @@ class ProductController extends Controller
         $galleryimg = $request->file('galleryimg');
 
         if(isset($baseimg) && !empty($baseimg)) {
-            $img = $this->imageRepositories->saveImg($baseimg,Goods::GOOD_IMG . $product->id,$product->id);
+            $img = $this->imageRepositories->saveImg($baseimg,Goods::GOOD_IMG . $product->id,$product->id,$flag = 1);
             $product->img = $img;
             $product->update();
         }
