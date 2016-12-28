@@ -107,7 +107,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('edit/{id}',['as' => 'category.edit', 'uses' => 'CategoryController@editCategory']);
             Route::post('edit/{id?}', ['as' => 'category.update', 'uses' => 'CategoryController@updateCategory']);
             Route::get('delete/{id}', ['as' => 'category.delete', 'uses' => 'CategoryController@deleteCategory']);
-            Route::get('subCat/{id}', ['as' => 'category.subCat', 'uses' => 'CategoryController@updateSubCategory']);
+            Route::get('subCat/{id}', ['as' => 'category.subCat', 'uses' => 'CategoryController@editCatalog']);
 //            Route::get('all/{id}', ['as' => 'category.all', 'uses' => 'CategoryController@categoryAll']);
         });
         Route::group(['prefix' => 'product'], function() {

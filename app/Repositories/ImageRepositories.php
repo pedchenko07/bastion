@@ -34,6 +34,5 @@ class ImageRepositories implements Imageable
         if(file_exists(public_path($path) . $file)) {
             return File::delete(public_path($path) . $file);
         }
-        throw new \Exception('У категории нет картинок!');
     }
 }

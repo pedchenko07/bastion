@@ -7,6 +7,9 @@ use File;
 class Brand extends Model
 {
     protected $table = 'brands';
+    
+    const PATH_IMG = "frontend/img/brands/";
+
 
     public static function getAllBrands()
     {
@@ -31,12 +34,7 @@ class Brand extends Model
 
     public static function deleteById($id)
     {
-        $obj = self::getBrandById($id); //Получаем категорию
-        $subBrands = $obj->getSubBrands(); //Получаем под категории
-        if(count($subBrands) > 0) {
-            return false;
-        }
-        return $obj->delete(); //Удаляем категорию и изображение
+        return self::whereId($id)->delete();
     }
 
     public static function getBrandsAndSubBrands()
@@ -50,13 +48,18 @@ class Brand extends Model
 
     private function getSubBrands()
     {
-        return $this->subBrands = self::where('parent_id', '=', $this->id)
+        $this->subBrands = self::where('parent_id', '=', $this->id)
             ->get();
-
+        return $this;
     }
 
     public function goods()
     {
         return $this->hasMany('App\Models\Goods');
+    }
+    
+    public function children()
+    {
+        return $this->hasMany('App\Models\Brand', 'parent_id');
     }
 }

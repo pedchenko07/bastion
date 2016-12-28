@@ -14,7 +14,6 @@ class ProductController extends Controller
 {
     private $data;
     private $imageRepositories;
-    const GOOD_IMG = "frontend/img/productID_";
 
     public function __construct(Imageable $imageRepositories)
     {
@@ -74,14 +73,14 @@ class ProductController extends Controller
         $galleryimg = $request->file('galleryimg');
 
         if(isset($baseimg) && !empty($baseimg)) {
-            $img = $this->imageRepositories->saveImg($baseimg,self::GOOD_IMG . $product->id,$product->id);
+            $img = $this->imageRepositories->saveImg($baseimg,Goods::GOOD_IMG . $product->id,$product->id);
             $product->img = $img;
             $product->update();
         }
 
         if(isset($galleryimg[0]) && !empty($galleryimg)) {
             foreach($galleryimg as $key => $val) {
-                $galleryName[] = $this->imageRepositories->saveImg($val,self::GOOD_IMG . $product->id, $product->id . '_' . $key,$flag = 1 );
+                $galleryName[] = $this->imageRepositories->saveImg($val,Goods::GOOD_IMG . $product->id, $product->id . '_' . $key,$flag = 1 );
             }
             $product->img_slide = implode("|", $galleryName);
             $product->update();
@@ -99,26 +98,18 @@ class ProductController extends Controller
     {
         $good = Goods::getGoodById($id);
         if($good->img !== 'no_image.jpg') {
-            try {
-                $this->imageRepositories->deleteImg($good->img,self::GOOD_IMG . $good->id . '/');
-            } catch(\Exception $e) {
-                Log::info($e->getMessage());
-            }
+            $this->imageRepositories->deleteImg($good->img,Goods::GOOD_IMG . $good->id . '/');
         }
 
         if(!is_null($good->img_slide)) {
-            try {
-                $image = explode("|", $good->img_slide);
-                foreach ($image as $img) {
-                    $this->imageRepositories->deleteImg($img,self::GOOD_IMG . $good->id . '/');
-                }
-            } catch(\Exception $e) {
-                Log::info($e->getMessage());
+            $image = explode("|", $good->img_slide);
+            foreach ($image as $img) {
+                $this->imageRepositories->deleteImg($img,Goods::GOOD_IMG . $good->id . '/');
             }
         }
 
-        if(file_exists(public_path(self::GOOD_IMG . $good->id))) {
-            rmdir(public_path(self::GOOD_IMG . $good->id));
+        if(file_exists(public_path(Goods::GOOD_IMG . $good->id))) {
+            rmdir(public_path(Goods::GOOD_IMG . $good->id));
         }
 
         $brandId = $good->brand_id;
