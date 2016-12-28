@@ -114,8 +114,8 @@ class CategoryController extends Controller
 
     public function deleteCategory($id)
     {
-        $brand = Brand::getBrandByIdAndAllSubBrands($id);
-        if(count($brand->subBrands) == 0) {
+        $brand = Brand::getBrandById($id);
+        if($brand->children->isEmpty()) {
             $this->imageRepositories->deleteImg($brand->img,Brand::PATH_IMG);
             $goods = $brand->goods;
             foreach($goods as $good) {
