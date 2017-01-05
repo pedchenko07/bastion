@@ -1,3 +1,4 @@
+console.log('unveil.js');
 /**
  * jQuery Unveil
  * A very lightweight jQuery plugin to lazy load images

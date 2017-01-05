@@ -32,13 +32,13 @@
                 <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="product-thumb product-category">
                             <div class="image">
-                                <a class="lazy lazy-loaded" style="padding-bottom: 100%" href="">
+                                <a class="lazy lazy-loaded" style="padding-bottom: 100%" href="{{ route('item.index',$good->id) }}">
                                     <img alt="" title="" class="img-responsive" src="{{$good->img !== 'no_image.jpg' ? asset('frontend/img/productID_' . $good->id . '/' . $good->img) : asset('frontend/img/' . $good->img)}}">
                                 </a>
                             </div>
                             <div class="caption">
                                 <div class="price">{{ $good->price }} руб.</div>
-                                <div class="name"><a href="">{{ $good->name }}</a></div>
+                                <div class="name"><a href="{{ route('item.index',$good->id) }}">{{ $good->name }}</a></div>
                                 <div class="description-small">{{ substr($good->anons,0,100) }} ...</div>
                                 <div class="description">{!! substr($good->content,0,300) !!} ... </div>
                                 <div class="cart-button" id="">
