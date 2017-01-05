@@ -1,3 +1,4 @@
+console.log('totop');
 (function($){
     $.fn.UItoTop = function(options) {
 

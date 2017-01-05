@@ -13,8 +13,13 @@
                                         <div class="item_thumbs">
 
                                             <li>
-                                                <a class="thumb-link" rel="gallery" fullsize="photos/full_size/" title="" href="photos/">
-                                                    <img src="thumbs/"/>
+                                                <a
+                                                        class="thumb-link"
+                                                        rel="gallery"
+                                                        fullsize="{{ asset('frontend/img/productID_') . $good->id . '/fullsize/' . $good->img}}"
+                                                        title=""
+                                                        href="{{ asset('frontend/img/productID_') . $good->id . '/' . $good->img}}">
+                                                    <img src="{{ asset('frontend/img/productID_') . $good->id . '/' . $good->img}}"/>
                                                 </a>
                                             </li>
 
@@ -25,7 +30,7 @@
                         </div>
                     </div>
                     <div id="product-image" class="product-image">
-                        <img class="pi-title" src="photos/" fullsize="photos/full_size/"/>
+                        <img class="pi-title" src="" fullsize=""/>
                     </div>
                 </div>
 

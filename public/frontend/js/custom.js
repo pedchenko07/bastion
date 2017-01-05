@@ -4,7 +4,7 @@ $(document).ready(function(){
         var imgLink = $(this).attr('href');
         var fullSize = $(this).attr('fullsize');
         $('.pi-title').attr('src', imgLink);
-        console.log($('#product_image img'));
+        // console.log($('#product_image img'));
         $('#product_image img').attr('fullsize', fullSize);
         $('#product-image').zoom({url: fullSize});
         $('.item_thumbs a').removeClass('active');
