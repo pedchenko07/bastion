@@ -1,11 +1,12 @@
 var gl_path = jQuery('#gl_path').html();
 function include(scriptUrl) {
     document.write('<script src="' + scriptUrl + '"></script>');
+    // console.log(scriptUrl);
 }
 
 /* Easing library
  ========================================================*/
-include('js/jquery.easing.1.3.js');
+include('../frontend/js/jquery.easing.1.3.js');
 
 /* ToTop
  ========================================================*/
@@ -13,7 +14,7 @@ include('js/jquery.easing.1.3.js');
 (function ($) {
     var o = $('html');
     if (o.hasClass('desktop')) {
-        include('views/kobra/js/jquery.ui.totop.js');
+        include("../frontend/js/jquery.ui.totop.js");
 
         $(document).ready(function () {
             $().UItoTop({easingType: 'easeOutQuart'});
@@ -48,7 +49,7 @@ $(document).ready(function (){
 (function ($) {
     var o = $('html');
     if (o.hasClass('desktop')) {
-        include('views/kobra/js/tmstickup.js');
+        include('../frontend/js/tmstickup.js');
 
         $(window).load(function () {
             $('.menu-wrap').TMStickUp({})
@@ -63,7 +64,7 @@ $(document).ready(function (){
     var o = $('.lazy img');
 
     if (o.length > 0) {
-        include('js/jquery.unveil.js');
+        include('../frontend/js/jquery.unveil.js');
 
         $(document).ready(function () {
             $(o).unveil(0, function () {
@@ -86,9 +87,9 @@ $(document).ready(function (){
 (function ($) {
     var o = $('#image-additional');
     if (o.length > 0) {
-        include('views/kobra/js/magnificent/jquery.ba-throttle-debounce.js');
-        include('views/kobra/js/magnificent/jquery.bridget.js');
-        include('views/kobra/js/magnificent/magnificent.js');
+        include('../frontend/js/jquery.ba-throttle-debounce.js');
+        include('../frontend/js/jquery.bridget.js');
+        include('../frontend/js/magnificent.js');
 
         $(document).ready(function () {
 
@@ -143,7 +144,7 @@ $(document).ready(function (){
     var o = $('#image-additional');
     var o2 = $('#gallery');
     if (o.length || o2.length) {
-        include('js/jquery.bxslider/jquery.bxslider.js');
+        include('../frontend/js/jquery.bxslider.js');
     }
 
     if (o.length) {
@@ -190,7 +191,7 @@ $(document).ready(function (){
     var o = $('.quickview');
     var o2 = $('#default_gallery');
     if (o.length > 0 || o2.length > 0) {
-        include('views/kobra/js/fancybox/jquery.fancybox.js');
+        include('../frontend/js/fancybox/jquery.fancybox.js');
     }
 
     if (o.length) {
@@ -215,7 +216,7 @@ $(document).ready(function (){
  ========================================================*/
 ;
 (function ($) {
-    include('views/kobra/js/superfish.js');
+    include('../frontend/js/superfish.js');
     $(window).load(function () {
         $('#tm_menu .menu').superfish();
     });
@@ -283,10 +284,10 @@ $(document).ready(function (){
 (function ($) {
     var o = $('html');
     if (o.hasClass('desktop') && o.find('body').hasClass('common-home')) {
-        include('views/kobra/js/greensock/jquery.gsap.min.js');
-        include('views/kobra/js/greensock/TimelineMax.min.js');
-        include('views/kobra/js/greensock/TweenMax.min.js');
-        include('views/kobra/js/greensock/jquery.scrollmagic.min.js');
+        include('../frontend/js/greensock/jquery.gsap.min.js');
+        include('../frontend/js/greensock/TimelineMax.min.js');
+        include('../frontend/js/greensock/TweenMax.min.js');
+        include('../frontend/js/greensock/jquery.scrollmagic.min.js');
 
         function listTabsAnimate(element) {
             if ($(element).length) {

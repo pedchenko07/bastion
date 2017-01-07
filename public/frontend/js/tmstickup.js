@@ -1,3 +1,4 @@
+console.log('tmstickup.js');
 (function($,undefined){
     var
         def={
