@@ -112,10 +112,4 @@ class NewsController extends Controller
         }
         return redirect()->route('news.index');
     }
-
-    public function sliders()
-    {
-        $data['brands'] = $this->data['brands'];
-        return view('admin.news.sliders', $data);
-    }
 }

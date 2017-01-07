@@ -24,7 +24,7 @@
                     <td><a href="?view=sliders&remove=ID">х</a></td>
                 </tr>
             </table>
-            <a href="?view=add_slider">Добавить слайдер</a>
+            <a href="{{ route('sliders.create') }}">Добавить слайдер</a>
         </div>
     </div> <!-- .content -->
 

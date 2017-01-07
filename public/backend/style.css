@@ -852,3 +852,10 @@ border-radius:3px;
 .new-user-form td {
 	padding: 5px 10px;
 }
+
+.table {
+	display: table;
+	border-collapse: separate;
+	border-spacing: 2px;
+	border-color: grey;
+}
