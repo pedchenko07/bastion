@@ -33,7 +33,7 @@
                         <div class="product-thumb product-category">
                             <div class="image">
                                 <a class="lazy lazy-loaded" style="padding-bottom: 100%" href="{{ route('item.index',$good->id) }}">
-                                    <img alt="" title="" class="img-responsive" src="{{$good->img !== 'no_image.jpg' ? asset('frontend/img/productID_' . $good->id . '/' . $good->img) : asset('frontend/img/' . $good->img)}}">
+                                    <img alt="" title="" class="img-responsive" src="{{$good->img !== 'no_image.jpg' ? asset(\App\Models\Goods::GOOD_IMG . $good->id . '/' . $good->img) : asset(\App\Repositories\ImageRepositories::PATH_IMG . $good->img)}}">
                                 </a>
                             </div>
                             <div class="caption">
