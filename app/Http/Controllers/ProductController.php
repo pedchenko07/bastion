@@ -80,7 +80,7 @@ class ProductController extends Controller
 
         if(isset($galleryimg[0]) && !empty($galleryimg)) {
             foreach($galleryimg as $key => $val) {
-                $galleryName[] = $this->imageRepositories->saveImg($val,Goods::GOOD_IMG . $product->id, $product->id . '_' . $key,$flag = 1 );
+                $galleryName[] = $this->imageRepositories->saveImg($val,Goods::GOOD_IMG . $product->id, $product->id . '_' . $key,$flag = 2 );
             }
             $product->img_slide = implode("|", $galleryName);
             $product->update();

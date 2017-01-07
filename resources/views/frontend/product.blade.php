@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('content')
+    @if(isset($good) && !empty($good) )
     <div id="content" class="col-sm-9 product_page">
         <div class="row product-content-columns">
             <div class="col-sm-5 col-lg-9 product_page-left">
-
                 <div id="default_gallery" class="product-gallery">
                     <div class="image-thumb">
                         <div class="bx-wrapper" style="max-width: 99px; margin: 0px auto;">
@@ -11,18 +11,20 @@
                                 <ul id="image-additional" class="image-additional" style="width: auto; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
                                     <div class="item_gallery">
                                         <div class="item_thumbs">
-
-                                            <li>
-                                                <a
-                                                        class="thumb-link"
-                                                        rel="gallery"
-                                                        fullsize="{{ asset('frontend/img/productID_') . $good->id . '/fullsize/' . $good->img}}"
-                                                        title=""
-                                                        href="{{ asset('frontend/img/productID_') . $good->id . '/' . $good->img}}">
-                                                    <img src="{{ asset('frontend/img/productID_') . $good->id . '/' . $good->img}}"/>
-                                                </a>
-                                            </li>
-
+                                            @if(isset($good->img_slide))
+                                                @foreach(explode("|", $good->img_slide) as $slide)
+                                                    <li>
+                                                        <a
+                                                                class="thumb-link"
+                                                                rel="gallery"
+                                                                fullsize="{{ asset('frontend/img/fullsize') . '/' . $slide}}"
+                                                                title=""
+                                                                href="{{ asset('frontend/img/productID_') . $good->id . '/' . $slide}}">
+                                                            <img src="{{ asset('frontend/img/productID_') . $good->id . '/' . $slide}}"/>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </ul>
@@ -30,29 +32,43 @@
                         </div>
                     </div>
                     <div id="product-image" class="product-image">
-                        <img class="pi-title" src="" fullsize=""/>
+                        @if(isset($good->img_slide))
+                            <img
+                                class="pi-title"
+                                src="{{ asset('frontend/img/productID_') . $good->id . '/' . explode("|", $good->img_slide)[0]}}"
+                                fullsize="{{ asset('frontend/img/fullsize') . '/' . explode("|", $good->img_slide)[0]}}"/>
+                        @else
+                            <img
+                                class="pi-title"
+                                src="{{ asset('frontend/img/productID_') . $good->id . '/' . $good->img}}"
+                                fullsize="{{ asset('frontend/img/fullsize') . '/' . $good->img}}"/>
+                        @endif
                     </div>
                 </div>
-
-
             </div>
             <div class="col-sm-7 col-lg-3 product_page-right">
                 <div class="general_info product-info">
 
                     <h1 class="product-title"></h1>
                     <div class="price-section">
-                        <span class="price-new">Цена:  грн.</span>
+                        @if(isset($good->price))
+                            <span class="price-new">Цена:{{ $good->price }}  руб.</span>
+                        @endif
                         <div class="reward-block"></div>
                     </div>
 
                     <ul class="list-unstyled product-section">
-                        <li>Производитель: </li>
+                        @if(isset($good->country) && !empty($good->country))
+                            <li>Производитель: {{ $good->country }} </li>
+                        @else
+                            <li>Производитель не указан.</li>
+                        @endif
                     </ul>
                 </div>
                 <div id="product">
                     <div class="form-group form-horizontal">
                         <div class="cart-button" id="">
-                            <a class="btn btn-primary" href="?view=addtocart&amp;goods_id=" class="dobavit-cart">Добавить в корзину</a>
+                            <a class="btn btn-primary" href="" class="dobavit-cart">Добавить в корзину</a>
                         </div>
                     </div>
                 </div>
@@ -61,9 +77,13 @@
         <div id="tab-description" class="product-desc product-section">
             <h3 class="product-section_title">Описание</h3>
             <div class="page-holder">
-                <p>
-
-                </p>
+                @if(isset($good->content) && !empty($good->content))
+                    <p>{{ $good->content }}</p>
+                @elseif(isset($good->anons) && !empty($good->anons))
+                    <p>{{ $good->anons }}</p>
+                @else
+                    <p>У товара нет описания</p>
+                @endif
             </div>
             <div class="clearfix"></div>
         </div>
@@ -150,8 +170,9 @@
         </div>
             @endif
     </div>
-
+    @else
     <div class="error">Такого товара нет</div>
+    @endif
     <script type="text/javascript" language="javascript">
         function call() {
             var msg   = $('#formx').serialize();

@@ -7,14 +7,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <script src="{{ asset('frontend/js/jquery-2.1.1.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('frontend/js/custom.js') }}" type="text/javascript"></script>
 <script src="{{ asset('frontend/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('frontend/js/common.js') }}" type="text/javascript"></script>
 <script src="{{ asset('frontend/js/owl.carousel.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('frontend/js/device.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('frontend/js/camera.js') }}" type="text/javascript"></script>
 <script src="{{ asset('frontend/js/jquery.zoom.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('frontend/js/jquery.elevateZoom-3.0.8.min.js') }}" type="text/javascript"></script>
+{{--<script src="{{ asset('frontend/js/jquery.elevateZoom-3.0.8.min.js') }}" type="text/javascript"></script>--}}
+<script src="{{ asset('frontend/js/custom.js') }}" type="text/javascript"></script>
 
 <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet" media="screen"/>
 <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
