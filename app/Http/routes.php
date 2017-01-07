@@ -140,6 +140,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('create', ['as' => 'sliders.create', 'uses' => 'SliderController@create']);
             Route::get('create/img', ['as' => 'sliders.create.img', 'uses' => 'SliderController@create']);
             Route::get('create/video', ['as' => 'sliders.create.video', 'uses' => 'SliderController@create']);
+            Route::post('create/img', ['as' => 'sliders.save.img', 'uses' => 'SliderController@createImg']);
 
         });
 //        Route::get('sliders', ['as' => 'news.sliders', 'uses' => 'NewsController@sliders']);

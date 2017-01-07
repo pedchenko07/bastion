@@ -3,8 +3,10 @@
 
     <div class="content">
         <div class="slider-add-holder">
+            @if (count($errors) > 0)
+                    <h3 class="error">Вы не заполнили форму!</h3>
+            @endif
 
-            {{--<h3 class="error">Вы не заполнили форму!</h3>--}}
             <h2 class="add-slider-title">Добавить новый слайдер</h2>
             @if(Request::is('admin/sliders/create'))
             <ul class="slider-change">
@@ -69,6 +71,7 @@
                         @endif
                         <tr>
                             <td>
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input class="admin-button" type="submit" value="Добавить"/>
                             </td>
                         </tr>
