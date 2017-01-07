@@ -7,7 +7,7 @@ use Intervention\Image\Facades\Image as Img;
 
 class ImageRepositories implements Imageable
 {
-    const PATH_IMG = "frontend/img/default/";
+    const PATH_IMG = "frontend/img/";
     const FULLSIZE = "frontend/img/fullsize/";
 
     public function saveImg($file, $path = self::PATH_IMG, $name = null,$flag = null)

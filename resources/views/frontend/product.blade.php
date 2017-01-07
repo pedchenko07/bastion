@@ -17,10 +17,10 @@
                                                         <a
                                                                 class="thumb-link"
                                                                 rel="gallery"
-                                                                fullsize="{{ asset('frontend/img/fullsize') . '/' . $slide}}"
+                                                                fullsize="{{ asset(\App\Repositories\ImageRepositories::FULLSIZE) . '/' . $slide}}"
                                                                 title=""
-                                                                href="{{ asset('frontend/img/productID_') . $good->id . '/' . $slide}}">
-                                                            <img src="{{ asset('frontend/img/productID_') . $good->id . '/' . $slide}}"/>
+                                                                href="{{ asset(\App\Models\Goods::GOOD_IMG) . $good->id . '/' . $slide}}">
+                                                            <img src="{{ asset(\App\Models\Goods::GOOD_IMG) . $good->id . '/' . $slide}}"/>
                                                         </a>
                                                     </li>
                                                 @endforeach
@@ -35,8 +35,8 @@
                         @if(isset($good->img_slide))
                             <img
                                 class="pi-title"
-                                src="{{ asset('frontend/img/productID_') . $good->id . '/' . explode("|", $good->img_slide)[0]}}"
-                                fullsize="{{ asset('frontend/img/fullsize') . '/' . explode("|", $good->img_slide)[0]}}"/>
+                                src="{{ asset(\App\Models\Goods::GOOD_IMG) . $good->id . '/' . explode("|", $good->img_slide)[0]}}"
+                                fullsize="{{ asset(\App\Repositories\ImageRepositories::FULLSIZE) . '/' . explode("|", $good->img_slide)[0]}}"/>
                         @else
                             <img
                                 class="pi-title"
