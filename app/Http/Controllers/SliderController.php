@@ -86,7 +86,7 @@ class SliderController extends Controller
 
         $data = [
             'name' => $request->input('title'),
-            'status' => $request->input('status') == 'on' ? '1' : '0',
+            'status' => $request->input('status') == 'on' ? Slider::SLIDER_STATUS['on'] : Slider::SLIDER_STATUS['off'],
             'type' => $request->input('type')
         ];
 
@@ -119,6 +119,17 @@ class SliderController extends Controller
             $mess= ['message' => "Слайдер удален!"];
         } else {
             $mess= ['error' => 'Ошибка в БД, повторите попытку!'];
+        }
+
+        return redirect()->route('sliders.index')->with($mess);
+    }
+
+    public function edit($id)
+    {
+        if(Slider::editStatus($id) == 'on') {
+            $mess= ['message' => "Слайдер включен!"];
+        } else {
+            $mess= ['error' => 'Слайдер выключен!'];
         }
 
         return redirect()->route('sliders.index')->with($mess);

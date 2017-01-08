@@ -10,7 +10,7 @@
             @if(Session::has('error'))
                 <h3 class="error">{{Session::get('error')}}</h3>
             @endif
-            <table class="tabl">
+            <table class="tabl table">
                 <thead>
                 <tr>
                     <td><b>#id</b></td>
@@ -26,7 +26,7 @@
                         <td>{{ $slide->id }}</td>
                         <td>{{ $slide->name }}</td>
                         <td>{{ $slide->status == 1 ?  'Включен' : 'Выключен' }}</td>
-                        <td><a href="">v</a></td>
+                        <td><a href="{{ route('sliders.edit', $slide->id) }}">v</a></td>
                         <td>{{ $slide->type }}</td>
                         <td><a href="{{ route('sliders.delete', $slide->id) }}">х</a></td>
                     </tr>

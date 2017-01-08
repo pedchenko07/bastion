@@ -9,6 +9,11 @@ class Slider extends Model
     protected $table = 'sliders';
 
     protected $fillable = ['name', 'status','type'];
+    
+    const SLIDER_STATUS = [
+        'on' => 1,
+        'off' => 0
+    ];
 
     public function images()
     {
@@ -47,5 +52,23 @@ class Slider extends Model
     {
         $slider->images()->delete();
         return $slider->delete();   
+    }
+    
+    public static function editStatus($id)
+    {
+        $slider = self::whereId($id)->first();
+//        $slider->status == '1' ? $slider->status = self::SLIDER_STATUS['off'] : $slider->status = self::SLIDER_STATUS['on'];
+//        return $slider->save();
+        if($slider->status == '1') {
+            $slider->status = self::SLIDER_STATUS['off'];
+            $slider->save();
+            
+            return 'off';            
+        } else {
+            $slider->status = self::SLIDER_STATUS['on'];
+            $slider->save();
+
+            return 'on';
+        }
     }
 }
