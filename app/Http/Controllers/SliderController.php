@@ -52,15 +52,49 @@ class SliderController extends Controller
 
         $slider = Slider::create($data);
         $sliders = $request->file('sliders');
-        $link = $request->input('link');
+        $links = $request->input('link');
 
-        for($i =0; $i < count($link); $i++) {
-            $img = $this->imageSliders->saveImg($sliders[$i],ImageToSlider::PATH_IMGSLIDERS,$slider->id . '_' . $i, null);
-            ImageToSlider::create([
-                'slider_id' => $slider->id,
-                'image' => $img,
-                'link' => $link[$i]
-            ]);
+        $img = [];
+        if(!is_null($sliders[0]) && !empty($sliders[0])) {
+            for($i =0; $i < count($sliders); $i++) {
+                $img[$i]['image'] = $this->imageSliders->saveImg($sliders[$i],ImageToSlider::PATH_IMGSLIDERS,$slider->id . '_' . $i, null);
+                $img[$i]['link'] = $links[$i]; 
+            }
+            Slider::createImgToSlider($slider,$img);
+        }
+
+        if($slider) {
+            $mess= ['message' => "Слайдер добавлен!"];
+        } else {
+            $mess= ['error' => 'Ошибка в БД, повторите попытку!'];
+        }
+
+        return redirect()->route('sliders.index')->with($mess);
+    }
+
+    public function createVideo(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'title' => 'required'
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $data = [
+            'name' => $request->input('title'),
+            'status' => $request->input('status') == 'on' ? '1' : '0',
+            'type' => $request->input('type')
+        ];
+
+        $slider = Slider::create($data);
+        $links = $request->input('link');
+        
+        if(!empty($links[0])) {
+            Slider::createVideoToSlider($slider,$links);
         }
 
         if($slider) {

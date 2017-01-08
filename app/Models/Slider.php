@@ -19,4 +19,22 @@ class Slider extends Model
     {
         return self::all();
     }
+
+    public static function createVideoToSlider($slider,$links)
+    {
+        $data = [];
+        foreach($links as $link) {
+            $data[] = new ImageToSlider(['link' => $link]);
+        }
+        return $slider->images()->saveMany($data);
+    }
+
+    public static function createImgToSlider($slider,$images)
+    {
+        $data = [];
+        foreach($images as $img) {
+            $data[] = new ImageToSlider($img);
+        }
+        return $slider->images()->saveMany($data);
+    }
 }
