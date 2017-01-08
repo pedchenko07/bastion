@@ -127,7 +127,6 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/', ['as' => 'user.index', 'uses' => 'UserController@index']);
 //            Route::post('save', ['as' => 'user.save', 'uses' => 'UserController@saveNewEmail']);
             Route::get('{id}/edit', ['as' => 'user.edit', 'uses' => 'UserController@edit']);
-            Route::post('{id}/update', ['as' => 'user.update', 'uses' => 'UserController@updateUser']);
             Route::post('save', ['as' => 'user.save', 'uses' => 'UserController@saveUser']);
             Route::get('add', ['as' => 'user.add', 'uses' => 'UserController@add']);
             Route::post('add', ['as' => 'user.new.save', 'uses' => 'UserController@saveNewUser']);

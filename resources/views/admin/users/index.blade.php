@@ -32,7 +32,7 @@
                         Дирректор
                 @endif</td>
                 <td>
-                    @if($user->role_id == 1)
+                    @if($user->role_id == 1 || Auth::user()->role_id == 2)
                     <a href="{{ route('user.edit',['id' => $user->id]) }}" class="edit-button">изменить</a>&nbsp;
                         @if(Auth::user()->id != $user->id)
                         | &nbsp;<a href="{{ route('user.delete',['id' => $user->id]) }}" class="zakaz-del" onclick="return confirm( '{{'Действительно хотите удалить пользователя '.$user->name}}') ? true : false;">удалить</a>
