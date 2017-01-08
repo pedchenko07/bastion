@@ -28,7 +28,7 @@
                         <td>{{ $slide->status == 1 ?  'Включен' : 'Выключен' }}</td>
                         <td><a href="">v</a></td>
                         <td>{{ $slide->type }}</td>
-                        <td><a href="">х</a></td>
+                        <td><a href="{{ route('sliders.delete', $slide->id) }}">х</a></td>
                     </tr>
                 @endforeach
             </table>

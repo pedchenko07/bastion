@@ -105,4 +105,22 @@ class SliderController extends Controller
 
         return redirect()->route('sliders.index')->with($mess);
     }
+    
+    public function delete($id)
+    {
+        $slider = Slider::getSliderById($id);
+        if($slider->type == 'image') {
+            foreach($slider->images as $img) {
+                $this->imageSliders->deleteImg($img->image, ImageToSlider::PATH_IMGSLIDERS);
+            }
+        }
+
+        if(Slider::deleteSlider($slider)) {
+            $mess= ['message' => "Слайдер удален!"];
+        } else {
+            $mess= ['error' => 'Ошибка в БД, повторите попытку!'];
+        }
+
+        return redirect()->route('sliders.index')->with($mess);
+    }
 }

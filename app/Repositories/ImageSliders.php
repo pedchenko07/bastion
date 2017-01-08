@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use File;
 use Intervention\Image\Facades\Image as Img;
 
 class ImageSliders implements Imageable
@@ -21,6 +22,9 @@ class ImageSliders implements Imageable
 
     public function deleteImg($file, $path)
     {
-        // TODO: Implement deleteImg() method.
+        if(file_exists(public_path($path) . $file)) {
+            File::delete(public_path($path) . $file);
+        }
+        return true;
     }
 }

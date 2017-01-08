@@ -37,4 +37,15 @@ class Slider extends Model
         }
         return $slider->images()->saveMany($data);
     }
+    
+    public static function getSliderById($id)
+    {
+        return self::whereId($id)->first();
+    }
+    
+    public static function deleteSlider($slider)
+    {
+        $slider->images()->delete();
+        return $slider->delete();   
+    }
 }
