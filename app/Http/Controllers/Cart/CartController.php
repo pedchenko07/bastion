@@ -59,7 +59,6 @@ class CartController extends Controller
 
     public function index()
     {
-        var_dump(Session::get('success'));
         // Поулчаем список товаров доступных на сайте
         if(!Session::has('cart')) {
             return view('frontend.cart', [
