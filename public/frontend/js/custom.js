@@ -17,8 +17,8 @@ $(document).ready(function(){
         var productId = this.id;
         e.preventDefault();
         $.ajax({
-            url: '?view=cartadd&goods_id=' + productId,
-            type: 'post',
+            url: '/cart/add/product/' + productId,
+            type: 'get',
             success: function(response){
                 $(".li-cart").load(location.href + " .li-cart");
                 $('.cart-message').show();

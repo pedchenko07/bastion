@@ -17,7 +17,6 @@ class ProductController extends Controller
 
     public function __construct(Imageable $imageRepositories)
     {
-        $this->data['brands'] = Brand::getBrandsAndSubBrands();
         $this->imageRepositories = $imageRepositories;
     }
 
@@ -31,7 +30,6 @@ class ProductController extends Controller
 
         return view('admin.product.add_product',
             [
-                'brands' => $this->data['brands'],
                 'activeBrand' => $activeBrand,
                 'good' => $good
             ]);

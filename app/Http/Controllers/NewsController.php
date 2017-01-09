@@ -14,7 +14,6 @@ class NewsController extends Controller
     protected $msg = false;
     public function index($msg = false)
     {
-        $data['brands'] = $this->data['brands'];
         if (Session::has('success')) {
             $data['success'] = Session::get('success');
         }
@@ -111,5 +110,11 @@ class NewsController extends Controller
             Session::flash('error', 'При обновлении что-то пошло не так');
         }
         return redirect()->route('news.index');
+    }
+
+    public function sliders()
+    {
+        $data['brands'] = $this->data['brands'];
+        return view('admin.news.sliders', $data);
     }
 }

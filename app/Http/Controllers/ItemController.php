@@ -17,10 +17,7 @@ class ItemController extends Controller
 
     public function __construct()
     {
-        $this->data['brands'] = Brand::getAllBrands();
-        $this->data['metrics'] = \App\Models\Metrics::getActive();
         $this->data['user'] = Auth::user();
-        $this->data['pages'] = Pages::getAll();
     }
 
     public function index($id = 0)
@@ -29,7 +26,6 @@ class ItemController extends Controller
             return redirect()->route('site.reviews.index');
         }
         $this->data['good'] = Goods::getGoodById($id);
-//        dd($this->data['good']);
         $this->data['product_id'] = $id;
         $this->data['reviews'] = Review::getAllProductById($id);
         $this->data['reviewsCount'] = Review::countProductReviews($id);

@@ -14,7 +14,7 @@
                     <th class="str_action">Действие</th>
                 </tr>
                 <tr>
-                    <td class="name_page">{{$settings->name_shop}}</td>
+                    <td class="name_page">{{(!is_null($settings))?$settings->name_shop:'имя не задано'}}</td>
                     <td><a href="{{route('settings.edit')}}" class="edit-button">Редактировать</a></td>
                 </tr>
             </table>
@@ -30,6 +30,7 @@
                     <th class="str_action">Действие</th>
                 </tr>
                 @for($i = 0, $count = count($deliveryList); $i < $count; $i++)
+
                 <tr>
                     <td>{{$i+1}}</td>
                     <td class="name_page">{{$deliveryList[$i]->name}}</td>

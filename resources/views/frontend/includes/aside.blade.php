@@ -1,16 +1,5 @@
 <aside id="column-left" class="col-sm-3 ">
-    <div class="box category">
-        <div class="box-heading"><h3>Категории</h3></div>
-        <div class="box-content">
-            <div class="box-category">
-                <ul class="menu">
-                    @foreach($brands as $brand)
-                    <li><a href="{{ route('site.category',$brand->id) }}">{{ $brand->name }}</a></li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    </div>
+    @include('frontend.composers.box-category')
     <script>
         jQuery(document).ready(function(){
             jQuery('.box-category .menu').find('li>ul').before('<i class="fa fa-caret-down"></i>').parent().addClass('inset');
@@ -49,18 +38,7 @@
         </div>
     </div>
 
-    <div class="metrika box">
-        <div class="box-heading">
-            <h3 class="toggle-metrika" data-toggle="collapse" data-target="#metrika">Метрика<i class="material-icons">expand_more</i></h3>
-        </div>
-        <div class="box-content collapse" id="metrika">
-            @foreach($metrics as $metric)
-            <div class="metric">
-                {!! $metric->code !!}
-            </div>
-            @endforeach
-        </div>
-    </div>
+    @include('frontend.composers.metrics')
     <script>
         window.fbAsyncInit = function () {
             var id = '403545523132758';

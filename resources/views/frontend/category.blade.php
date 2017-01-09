@@ -41,7 +41,7 @@
                                 <div class="name"><a href="{{ route('item.index',$good->id) }}">{{ $good->name }}</a></div>
                                 <div class="description-small">{{ substr($good->anons,0,100) }} ...</div>
                                 <div class="description">{!! substr($good->content,0,300) !!} ... </div>
-                                <div class="cart-button" id="">
+                                <div class="cart-button" id="{{$good->id}}">
                                     <a class="btn btn-add" href="" class="dobavit-cart2"><i class="material-icons">shopping_cart</i>Купить</a>
                                 </div>
                             </div>

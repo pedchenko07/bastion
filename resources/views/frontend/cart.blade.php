@@ -2,10 +2,15 @@
 @section('content')
 
     <div id="content-zakaz">
+        @if(Session::get('success'))
+            <h3 class="success">{{Session::get('success')}}</h3>
+        @endif
+        @if(count($productInCart))
         <h2>Оформление заказа</h2>
 
         <div id="content" class="col-sm-9">
             <form class="shoping_cart" action="" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
@@ -19,16 +24,21 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                        @foreach($productInCart as $product)
+                            <tr>
+                                <td class="text-center"><img width="50" height="50" src="{{$product->img}}"></td>
+                                <td class="text-left product-name"><a href="{{route('item.index', ['id' => $product->id])}}">{{$product->name}}</a></td>
+                                <td class="text-left">{{$product->quantity}}</td>
+                                <td class="text-right">{{$product->price . ' ' . $money}}</td>
+                                <td class="text-right">{{($product->price * $product->quantity) . ' ' . $money}}</td>
+                                <td class="text-right delete"><a href="{{route('cart.delete.product', ['id' => $product->id])}}"><i class="material-icons">clear</i></a></td>
+                            </tr>
+                        @endforeach
                         <tr>
-                            <td class="text-center"><img width="50" height="50" src=""></td>
-                            <td class="text-left product-name"><a href="?view=product&goods_id="></a></td>
-                            <td class="text-left"></td>
-                            <td class="text-right"></td>
-                            <td class="text-right"></td>
-                            <td class="text-right delete"><a href="?view=cart&delete="><i class="material-icons">clear</i></a></td>
+                            <td class="text-left product-name" colspan="2">Все товары</td>
+                            <td class="text-left" colspan="2">{{$totalQuantity}}</td>
+                            <td class="text-right" colspan="2">{{$totalPrice . ' ' . $money}}</td>
                         </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -49,10 +59,10 @@
                                         </div>
                                         <div class="features">
                                             <a href="https://www.privat24.ua/">
-                                                <img src="/views/kobra/img/privat24.png"/>
+                                                <img src="{{ asset('frontend/img/privat24.png') }}"/>
                                             </a>
                                             <a href="https://novaposhta.ua/">
-                                                <img src="/views/kobra/img/novaposhta.jpg"/>
+                                                <img src="{{ asset('frontend/img/novaposhta.jpg') }}"/>
                                             </a>
                                         </div>
                                         <div class="form-group required">
@@ -79,13 +89,20 @@
                                             <label class="control-label" for="comment">Примечание</label>
                                             <textarea class="form-control"></textarea>
                                         </div>
+                                        @if(count($oplata))
                                         <div class="form-group">
                                             <label for="oplata" class="control-label">Тип оплаты</label>
                                             <select name="oplata" class="form-control">
-                                                <option value="1">Наложенный платёж</option>
-                                                <option value="1">Предоплата</option>
+                                                @foreach($oplata as $item)
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
+                                        @else
+                                            <div>
+                                                <p>Извините, на сайте недоступны способы оплаты!</p>
+                                            </div>
+                                        @endif
                                     </fieldset>
                                 </div>
                             </div>
@@ -101,9 +118,9 @@
 
             </form>
         </div>
-
+        @else
         <h2>Корзина пуста</h2>
-
+        @endif
 
     </div> <!-- .content-zakaz -->
 

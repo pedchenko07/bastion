@@ -31,6 +31,14 @@ Route::group(['prefix' => '/'], function() {
     });
 });
 
+Route::group(['prefix' => 'cart'], function() {
+    Route::get('/', ['as' => 'cart.index', 'uses' => 'Cart\CartController@index']);
+    Route::post('/', ['as' => 'cart.order', 'uses' => 'Cart\CartController@getOrder']);
+    Route::get('add/product/{id}', ['as' => 'cart.add.product', 'uses' => 'Cart\CartController@add']);
+    Route::get('delete/product/{id}', ['as' => 'cart.delete.product', 'uses' => 'Cart\CartController@delete']);
+
+});
+
 Route::group(['prefix' => 'category'], function() {
     Route::get('/{id}', ['as' => 'site.category', 'uses' => 'SiteController@category']);
 });
@@ -127,7 +135,6 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('/', ['as' => 'user.index', 'uses' => 'UserController@index']);
 //            Route::post('save', ['as' => 'user.save', 'uses' => 'UserController@saveNewEmail']);
             Route::get('{id}/edit', ['as' => 'user.edit', 'uses' => 'UserController@edit']);
-            Route::post('{id}/update', ['as' => 'user.update', 'uses' => 'UserController@updateUser']);
             Route::post('save', ['as' => 'user.save', 'uses' => 'UserController@saveUser']);
             Route::get('add', ['as' => 'user.add', 'uses' => 'UserController@add']);
             Route::post('add', ['as' => 'user.new.save', 'uses' => 'UserController@saveNewUser']);
@@ -146,11 +153,24 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('edit/{id}', ['as' => 'sliders.edit', 'uses' => 'SliderController@edit']);
 
         });
-//        Route::get('sliders', ['as' => 'news.sliders', 'uses' => 'NewsController@sliders']);
-        Route::get('order', ['as' => 'order.index', 'uses' => 'OrderController@index']);
+        Route::group(['prefix' => 'order'], function() {
+            Route::get('/', ['as' => 'order.index', 'uses' => 'OrderController@index']);
+            Route::get('new', ['as' => 'order.new', 'uses' => 'OrderController@newOrders']);
+            Route::get('{id}', ['as' => 'order.show', 'uses' => 'OrderController@show']);
+            Route::get('status/{id}', ['as' => 'order.status', 'uses' => 'OrderController@status']);
+            Route::get('delete/{id}', ['as' => 'order.delete', 'uses' => 'OrderController@delete']);
+
+        });
+
     });
 
 });
 
 Route::get('/home', 'HomeController@index');
 
+/* View Composer Here */
+
+View::composer('frontend.composers.metrics', 'App\Http\ViewComposers\MetricsComposer');
+View::composer(['frontend.composers.box-category', 'admin.includes.leftbar'],
+    'App\Http\ViewComposers\BrandsComposer');
+View::composer('frontend.includes.header', 'App\Http\ViewComposers\HeaderComposer');

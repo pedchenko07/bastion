@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserSaveRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\Brand;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -109,7 +111,7 @@ class UserController extends Controller
         return redirect()->route('user.index')->withErrors('При удалении пользователя возникла ошибка!');
     }
 
-    public function saveNewUser(Request $request)
+    public function saveNewUser(UserSaveRequest $request)
     {
         if(User::validateEmail($request->input('email'))){
             return back()->withInput()->withErrors('Пользователь с такой почтой уже сущетвует!');
@@ -124,7 +126,7 @@ class UserController extends Controller
         return back()->withInput()->withErrors('При создании пользователя произошла ошибка!');
     }
 
-    public function saveUser(Request $request)
+    public function saveUser(UserUpdateRequest $request)
     {
         $user = User::find($request->input('id'));
         if(is_null($user)){

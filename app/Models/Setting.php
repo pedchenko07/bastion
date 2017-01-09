@@ -27,4 +27,9 @@ class Setting extends Model
     {
         return self::select('id')->first();
     }
+
+    public static function getMoney()
+    {
+        return self::select('money')->first();
+    }
 }

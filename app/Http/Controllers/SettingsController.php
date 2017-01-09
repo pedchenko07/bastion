@@ -19,7 +19,6 @@ class SettingsController extends Controller
         $data['deliveryList']   =   Dostavkas::getAll();
         $data['oplataList']     =   Oplata::getAll();
         $data['settings']       =   Setting::getFirstName();
-        $data['brands'] = $this->data['brands'];
 
         return view('admin.settings.index', $data);
     }
@@ -34,7 +33,6 @@ class SettingsController extends Controller
         if(Session::has('error')){
             $data['error'] = Session::get('error');
         }
-        $data['brands'] = $this->data['brands'];
 
         return view('admin.settings.delivery.addDelivery', $data);
     }
@@ -53,7 +51,6 @@ class SettingsController extends Controller
     public function deliveryEdit($id)
     {
         $data['item'] = Dostavkas::getById($id);
-        $data['brands'] = $this->data['brands'];
 
         return view('admin.settings.delivery.addDelivery', $data);
     }
@@ -84,7 +81,6 @@ class SettingsController extends Controller
         if(Session::has('error')){
             $data['error'] = Session::get('error');
         }
-        $data['brands'] = $this->data['brands'];
 
         return view('admin.settings.oplata.addOplata', $data);
     }
@@ -103,7 +99,6 @@ class SettingsController extends Controller
     public function oplataEdit($id)
     {
         $data['item'] = Oplata::getById($id);
-        $data['brands'] = $this->data['brands'];
 
         return view('admin.settings.oplata.addOplata', $data);
     }
@@ -142,8 +137,7 @@ class SettingsController extends Controller
         return view('admin.settings.editSetting', [
             'settings'  =>  $settings,
             'session'   =>  $session,
-            'field'     =>  $params,
-            'brands'    =>  $this->data['brands']
+            'field'     =>  $params
         ]);
     }
 

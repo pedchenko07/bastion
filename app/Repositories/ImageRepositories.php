@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+use App\Models\Goods;
 use File;
 use Intervention\Image\Facades\Image as Img;
 
@@ -48,5 +49,11 @@ class ImageRepositories implements Imageable
         }
 
         return true;
+    }
+
+    public static function generateFullImgPath(Goods $goods)
+    {
+        $goods->img = self::PATH_IMG .
+            'productID_' . $goods->id . '/' . $goods->img;
     }
 }
