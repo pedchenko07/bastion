@@ -15,12 +15,10 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->data['pages'] = Pages::getAll();
-        $this->data['brands'] = Brand::getBrandsAndSubBrands();
     }
 
     public function index()
     {
-//        dd($this->data);
         return view('admin.index',$this->data);
     }
 

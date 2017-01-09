@@ -153,8 +153,15 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('edit/{id}', ['as' => 'sliders.edit', 'uses' => 'SliderController@edit']);
 
         });
-//        Route::get('sliders', ['as' => 'news.sliders', 'uses' => 'NewsController@sliders']);
-        Route::get('order', ['as' => 'order.index', 'uses' => 'OrderController@index']);
+        Route::group(['prefix' => 'order'], function() {
+            Route::get('/', ['as' => 'order.index', 'uses' => 'OrderController@index']);
+            Route::get('new', ['as' => 'order.new', 'uses' => 'OrderController@newOrders']);
+            Route::get('{id}', ['as' => 'order.show', 'uses' => 'OrderController@show']);
+            Route::get('status/{id}', ['as' => 'order.status', 'uses' => 'OrderController@status']);
+            Route::get('delete/{id}', ['as' => 'order.delete', 'uses' => 'OrderController@delete']);
+
+        });
+
     });
 
 });
@@ -164,5 +171,6 @@ Route::get('/home', 'HomeController@index');
 /* View Composer Here */
 
 View::composer('frontend.composers.metrics', 'App\Http\ViewComposers\MetricsComposer');
-View::composer('frontend.composers.box-category', 'App\Http\ViewComposers\BrandsComposer');
+View::composer(['frontend.composers.box-category', 'admin.includes.leftbar'],
+    'App\Http\ViewComposers\BrandsComposer');
 View::composer('frontend.includes.header', 'App\Http\ViewComposers\HeaderComposer');

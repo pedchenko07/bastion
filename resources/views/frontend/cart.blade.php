@@ -2,6 +2,9 @@
 @section('content')
 
     <div id="content-zakaz">
+        @if(Session::get('success'))
+            <h3 class="success">{{Session::get('success')}}</h3>
+        @endif
         @if(count($productInCart))
         <h2>Оформление заказа</h2>
 
@@ -86,13 +89,20 @@
                                             <label class="control-label" for="comment">Примечание</label>
                                             <textarea class="form-control"></textarea>
                                         </div>
+                                        @if(count($oplata))
                                         <div class="form-group">
                                             <label for="oplata" class="control-label">Тип оплаты</label>
                                             <select name="oplata" class="form-control">
-                                                <option value="1">Наложенный платёж</option>
-                                                <option value="1">Предоплата</option>
+                                                @foreach($oplata as $item)
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
+                                        @else
+                                            <div>
+                                                <p>Извините, на сайте недоступны способы оплаты!</p>
+                                            </div>
+                                        @endif
                                     </fieldset>
                                 </div>
                             </div>

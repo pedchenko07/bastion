@@ -1,6 +1,6 @@
 <div class="content-main">
     <div class="leftBar">
-        <p class="new_orders"><a href="?view=orders&amp;status=0" class="new-order-button">Есть новые заказы <span>0</span></a></p>
+        <p class="new_orders"><a href="{{route('order.new')}}" class="new-order-button">Есть новые заказы <span>{{\App\Models\Order::countNotAcepticOrders()}}</span></a></p>
 
         <ul class="nav-left">
             <li><img src="{{url('backend/images/page-menu.png')}}" /> <a href="{{route('admin.index')}}">Основные страницы</a></li>
@@ -26,7 +26,7 @@
             <!-- Аккордеон -->
             </li>
             <li><img src="{{url('backend/images/news-menu.png')}}" /> <a href="{{route('news.index')}}">Новости</a></li>
-            <li><img src="{{url('backend/images/order-menu.png')}}" /> <a href="{{route('order.index')}}">Заказы</a></li>
+            <li><img src="{{url('backend/images/order-menu.png')}}" /> <a href="{{route('order.index')}}">Заказы ({{\App\Models\Order::countNotAcepticOrders()}})</a></li>
             <li><img src="{{url('backend/images/user-menu.png')}}" /> <a href="{{route('user.index')}}">Пользователи</a></li>
             <li><img src="{{url('backend/images/setting-menu.png')}}" /> <a href="{{route('settings.index')}}">Настройки</a></li>
             {{--<li><img src="{{url('backend/images/design-menu.png')}}" /> <a href="{{route('settings.design')}}">Дизайн</a></li>--}}

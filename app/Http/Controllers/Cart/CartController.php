@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Cart;
 
 use App\Http\Requests\OrderRequest;
 use App\Models\Brand;
+use App\Models\Customer;
 use App\Models\Goods;
+use App\Models\Oplata;
+use App\Models\Order;
 use App\Models\Setting;
+use App\Models\ZakazTovar;
 use App\Repositories\ImageRepositories;
 use Illuminate\Http\Request;
 
@@ -55,8 +59,14 @@ class CartController extends Controller
 
     public function index()
     {
+        var_dump(Session::get('success'));
         // Поулчаем список товаров доступных на сайте
-        $cart = unserialize(Session::get('cart', null));
+        if(!Session::has('cart')) {
+            return view('frontend.cart', [
+                'productInCart' => []
+            ]);
+        }
+        $cart = unserialize(Session::get('cart'));
         $productInCart = Goods::getGoodsByIds(array_keys($cart));
 
         // Подготавливаем товары к выводу, считаем общую стоимость и количество
@@ -84,11 +94,50 @@ class CartController extends Controller
             'totalQuantity' => $totalQuantity,
             'totalPrice'    => $totalPrice,
             'money'         => Setting::getMoney()->money,
+            'oplata'        => Oplata::all()
         ]);
     }
 
-    public function getOrder(OrderRequest $request)
+    public function getOrder(OrderRequest $request, Order $order, Customer $customer)
     {
-        dd($request->all());
+        $customer->name = $request->input('name', 'гость');
+        $customer->email = $request->input('email');
+        $customer->phone = $request->input('phone');
+        $customer->city = $request->input('city');
+        $customer->adres = $request->input('address');
+        if($customer->payment_type = $request->input('oplata', false)){
+            $first = Oplata::first();
+            if($first){
+                $customer->payment_type = $first->id;
+            } else {
+                $customer->payment_type = 1;
+            }
+        }
+        $customer->save();
+
+        $order->customer_id = $customer->id;
+        $order->date = date("Y-m-d H:i:s");
+        $order->dostavka_id = $request->input('dostavka_id', 1);
+        $order->oplata_id = $request->input('oplata', 1);
+        $order->status = 0;
+        $order->prim = $request->input('prim');
+        $order->save();
+
+        $cart = unserialize(Session::pull('cart', null));
+        $productInCart = Goods::getGoodsByIds(array_keys($cart));
+
+
+        foreach ($productInCart as $product) {
+            $tovar = new ZakazTovar();
+            $tovar->orders_id = $order->id;
+            $tovar->goods_id = $product->id;
+            $tovar->quantity = $cart[$product->id];
+            $tovar->name = $product->name;
+            $tovar->price = $product->price;
+            $tovar->save();
+            unset($tovar);
+        }
+
+        return back()->withSuccess('Заказ успешно оформлен! Спасибо!');
     }
 }
