@@ -67,7 +67,7 @@
                 </div>
                 <div id="product">
                     <div class="form-group form-horizontal">
-                        <div class="cart-button" id="">
+                        <div class="cart-button" id="{{$good->id}}">
                             <a class="btn btn-primary" href="" class="dobavit-cart">Добавить в корзину</a>
                         </div>
                     </div>

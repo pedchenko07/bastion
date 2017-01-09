@@ -31,6 +31,14 @@ Route::group(['prefix' => '/'], function() {
     });
 });
 
+Route::group(['prefix' => 'cart'], function() {
+    Route::get('/', ['as' => 'cart.index', 'uses' => 'Cart\CartController@index']);
+    Route::post('/', ['as' => 'cart.order', 'uses' => 'Cart\CartController@getOrder']);
+    Route::get('add/product/{id}', ['as' => 'cart.add.product', 'uses' => 'Cart\CartController@add']);
+    Route::get('delete/product/{id}', ['as' => 'cart.delete.product', 'uses' => 'Cart\CartController@delete']);
+
+});
+
 Route::group(['prefix' => 'category'], function() {
     Route::get('/{id}', ['as' => 'site.category', 'uses' => 'SiteController@category']);
 });
@@ -153,3 +161,8 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::get('/home', 'HomeController@index');
 
+/* View Composer Here */
+
+View::composer('frontend.composers.metrics', 'App\Http\ViewComposers\MetricsComposer');
+View::composer('frontend.composers.box-category', 'App\Http\ViewComposers\BrandsComposer');
+View::composer('frontend.includes.header', 'App\Http\ViewComposers\HeaderComposer');

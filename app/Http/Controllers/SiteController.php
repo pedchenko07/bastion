@@ -16,14 +16,12 @@ class SiteController extends Controller
     private $data = [];
     public function __construct()
     {
-        $this->data['brands'] = Brand::getAllBrands();
-        $this->data['metrics'] = \App\Models\Metrics::getActive();
         $this->data['user'] = Auth::user();
-        $this->data['pages'] = Pages::getAll();
     }
 
     public function index()
     {
+        $this->data['brands'] = Brand::getAllBrands();
         return view('frontend.index', $this->data);
     }
 

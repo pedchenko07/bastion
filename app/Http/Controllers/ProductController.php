@@ -17,7 +17,6 @@ class ProductController extends Controller
 
     public function __construct(Imageable $imageRepositories)
     {
-        $this->data['brands'] = Brand::getBrandsAndSubBrands();
         $this->imageRepositories = $imageRepositories;
     }
 

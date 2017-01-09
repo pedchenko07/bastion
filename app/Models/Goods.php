@@ -24,6 +24,15 @@ class Goods extends Model
         return self::whereId($id)->update($data);
     }
 
+    /***
+     * @param $ids array ids of products
+     * @return array collection of goods
+     */
+    public static function getGoodsByIds($ids)
+    {
+        return self::whereIn('id' ,$ids)->get();
+    }
+
     public static function getGoodsByBrandIds($ids)
     {
         return self::whereIn('brand_id',$ids)->get();

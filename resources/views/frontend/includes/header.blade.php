@@ -57,9 +57,9 @@
                             <li><a href="{{ route('site.reviews.index') }}">Отзывы о сайте</a></li>
                             <li><a href="?view=contacts">Контакты</a></li>
                             <li class="li-cart"><i class="material-icons">shopping_cart</i>
-                                <a href="?view=cart">
+                                <a href="{{route('cart.index')}}">
                                     <strong>Корзина</strong>
-                                    <span id="cart-total2" class="cart-total2">()</span> <i class="fa fa-caret-down"></i>
+                                    <span id="cart-total2" class="cart-total2">({{App\Helpers\CartHelper::countCart()}})</span> <i class="fa fa-caret-down"></i>
                                 </a>
                             </li>
 
