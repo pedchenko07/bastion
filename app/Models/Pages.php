@@ -15,7 +15,7 @@ class Pages extends Model
 
     public static function getAll()
     {
-        return self::all();
+        return self::all()->sortBy('position');
     }
 
     public static function getPageById($id)
