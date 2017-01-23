@@ -51,38 +51,7 @@
         });
     </script>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" id="header-slider" role="listbox">
-
-
-
-
-
-            <div class="item active">
-                <a href="">
-                    <img width="870px" height="414px" src=""/>
-                </a>
-            </div>
-
-            <div class="item">
-                <a href="">
-                    <img src="">
-                </a>
-            </div>
-
-        </div>
-
-        <!-- Left and right controls -->
-        <div class="control_slider">
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <i class="material-icons">chevron_left</i>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <i class="material-icons">chevron_right</i>
-            </a>
-        </div>
-    </div>
+    @include('frontend.includes.img_slider')
 
     <script>
         function getCookie(c_name) {
@@ -109,33 +78,6 @@
         @endforeach
     </div>
 
-    <div id="myCarousel2" class="carousel slide" data-ride="carousel">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" id="header-slider" role="listbox">
-
-
-
-
-            <div class="item active">
-                <iframe width="870" height="480" src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-            <div class="item">
-                <iframe width="870" height="480" src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-        </div>
-
-        <!-- Left and right controls -->
-        <div class="control_video_slider">
-            <a class="left carousel-control" href="#myCarousel2" role="button" data-slide="prev">
-                <i class="material-icons">arrow_back</i>
-            </a>
-            <a class="right carousel-control" href="#myCarousel2" role="button" data-slide="next">
-                <i class="material-icons">arrow_forward</i>
-            </a>
-        </div>
-    </div>
-
+    @include('frontend.includes.video_slider')
 
 @endsection
