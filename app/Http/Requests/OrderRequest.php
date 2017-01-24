@@ -26,7 +26,7 @@ class OrderRequest extends Request
         return [
             'name' => 'required',
             'email' => 'email|required',
-            'phone' => 'required|min:5|max:15',
+            'phone' => 'required|min:5|max:25',
             'city' => 'required',
             'address' => 'required',
 
