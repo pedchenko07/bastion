@@ -87,7 +87,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="comment">Примечание</label>
-                                            <textarea class="form-control"></textarea>
+                                            <textarea class="form-control" name="comment"></textarea>
                                         </div>
                                         @if(count($oplata))
                                         <div class="form-group">
