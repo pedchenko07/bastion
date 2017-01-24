@@ -50,7 +50,7 @@
                 <td>{{$order->customer->city}}</td>
                 <td class="name_page">{{$order->customer->adres}}</td>
                 <td>Email: {{$order->customer->email}}<br />Телефон: {{$order->customer->phone}}</td>
-                <td style="text-align:left;">{{$order->customer->prim}}</td>
+                <td style="text-align:left;">{{$order->prim}}</td>
             </tr>
         </table>
 
