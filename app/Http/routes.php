@@ -174,3 +174,5 @@ View::composer('frontend.composers.metrics', 'App\Http\ViewComposers\MetricsComp
 View::composer(['frontend.composers.box-category', 'admin.includes.leftbar'],
     'App\Http\ViewComposers\BrandsComposer');
 View::composer('frontend.includes.header', 'App\Http\ViewComposers\HeaderComposer');
+View::composer('frontend.includes.img_slider', 'App\Http\ViewComposers\ImgSliderComposer');
+View::composer('frontend.includes.video_slider', 'App\Http\ViewComposers\VideoSliderComposer');
