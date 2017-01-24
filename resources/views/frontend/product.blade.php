@@ -78,7 +78,7 @@
             <h3 class="product-section_title">Описание</h3>
             <div class="page-holder">
                 @if(isset($good->content) && !empty($good->content))
-                    <p>{{ $good->content }}</p>
+                    <p>{!! $good->content !!}</p>
                 @elseif(isset($good->anons) && !empty($good->anons))
                     <p>{{ $good->anons }}</p>
                 @else
