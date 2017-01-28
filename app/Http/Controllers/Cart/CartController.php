@@ -119,7 +119,7 @@ class CartController extends Controller
         $order->dostavka_id = $request->input('dostavka_id', 1);
         $order->oplata_id = $request->input('oplata', 1);
         $order->status = 0;
-        $order->prim = $request->input('prim');
+        $order->prim = $request->input('comment');
         $order->save();
 
         $cart = unserialize(Session::pull('cart', null));

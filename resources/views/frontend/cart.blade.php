@@ -67,34 +67,34 @@
                                         </div>
                                         <div class="form-group required">
                                             <label class="control-label" for="input-payment-firstname">ФИО</label>
-                                            <input type="text" name="name" value="" placeholder="ФИО" id="input-payment-firstname" class="form-control">
+                                            <input type="text" name="name" value="{{old('name')}}" placeholder="ФИО" id="input-payment-firstname" class="form-control">
                                         </div>
                                         <div class="form-group required">
                                             <label class="control-label" for="input-payment-email">E-Mail</label>
-                                            <input type="text" name="email" value="" placeholder="E-Mail" id="input-payment-email" class="form-control">
+                                            <input type="text" name="email" value="{{old('email')}}" placeholder="E-Mail" id="input-payment-email" class="form-control">
                                         </div>
                                         <div class="form-group required">
                                             <label class="control-label" for="input-payment-telephone">Телефон</label>
-                                            <input type="text" name="phone" value="" placeholder="Телефон" id="input-payment-telephone" class="form-control">
+                                            <input type="text" name="phone" value="{{old('phone')}}" placeholder="Телефон" id="input-payment-telephone" class="form-control">
                                         </div>
                                         <div class="form-group required">
                                             <label class="control-label" for="input-payment-address-1">Город</label>
-                                            <input type="text" name="city" value="" placeholder="Город" id="input-payment-address-1" class="form-control">
+                                            <input type="text" name="city" value="{{old('city')}}" placeholder="Город" id="input-payment-address-1" class="form-control">
                                         </div>
                                         <div class="form-group required">
                                             <label class="control-label" for="input-payment-address-1">Адрес или номер отделения новой почты</label>
-                                            <input type="text" name="address" value="" placeholder="Адрес" id="input-payment-address-1" class="form-control">
+                                            <input type="text" name="address" value="{{old('address')}}" placeholder="Адрес" id="input-payment-address-1" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="comment">Примечание</label>
-                                            <textarea class="form-control"></textarea>
+                                            <textarea class="form-control" name="comment"></textarea>
                                         </div>
                                         @if(count($oplata))
                                         <div class="form-group">
                                             <label for="oplata" class="control-label">Тип оплаты</label>
                                             <select name="oplata" class="form-control">
                                                 @foreach($oplata as $item)
-                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                <option value="{{$item->id}}" {{old('oplata') == $item->id?'selected':''}}>{{$item->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
