@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Validator;
 use App\Http\Requests;
+use App\Repositories\ImageRepositories;
 
 class ProductController extends Controller
 {
@@ -27,14 +28,18 @@ class ProductController extends Controller
         $good = null;
         if(!is_null($goodId)) {
             $good = Goods::getGoodById($goodId);
+            if($good->img != 'no_image.jpg') {
+                ImageRepositories::generateFullImgPath($good);
+            }
         }
-
+        
         return view('admin.product.add_product',
             [
                 'brands' => $this->data['brands'],
                 'activeBrand' => $activeBrand,
                 'good' => $good
-            ]);
+            ]
+        );
     }
 
     public function create(Request $request)
@@ -123,7 +128,7 @@ class ProductController extends Controller
         return redirect()->route('category.subCat', $brandId)->with($mess);
     }
 
-    public static function update(Request $request,$brandId,$goodId)
+    public function update(Request $request,$brandId,$goodId)
     {
         $messages = [
             'name.required' => 'У товара должно быть название'
@@ -154,6 +159,31 @@ class ProductController extends Controller
             'visible' => $request->input('visible'),
         ];
 
+        $baseimg = $request->file('baseimg');
+        $galleryimg = $request->file('galleryimg');
+
+        if(isset($baseimg) && !empty($baseimg)) {
+            $img = $this->imageRepositories->saveImg($baseimg,Goods::GOOD_IMG . $goodId,$goodId,$flag = 1);
+            $data['img'] = $img;
+        }
+
+        if(isset($galleryimg[0]) && !empty($galleryimg)) {
+            $good = Goods::getGoodById($goodId);
+            $slide = $good->img_slide;
+            if(strpos($slide, "|")) {
+                $slide = explode("|", $slide);
+                $slide = array_pop($slide);
+            }
+            $key = !is_null($slide) ? substr($slide,(strpos($slide, ".") - 1), 1) : 0;
+            $galleryName = !is_null($slide) ? explode("|", $good->img_slide) : [];
+            foreach($galleryimg as $val) {
+                $key++;
+                $galleryName[] = $this->imageRepositories->saveImg($val,Goods::GOOD_IMG . $good->id, $good->id . '_' . $key,$flag = 2 );
+            }
+
+            $data['img_slide'] = implode("|", $galleryName);
+        }
+
         $good = Goods::updateGood($goodId,$data);
 
         if($good) {
@@ -163,6 +193,30 @@ class ProductController extends Controller
         }
 
         return redirect()->route('category.subCat', $data['brand_id'])->with($mess);
+    }
+
+    public function deleteImg(Request $request)
+    {
+        $good = Goods::getGoodById($request->input('id'));
+
+        if($request->input('flag')) {
+            $this->imageRepositories->deleteImg($good->img, Goods::GOOD_IMG . $good->id . '/');
+            $good->img = 'no_image.jpg';
+            $good->update();
+        } else {
+            $slide = $request->input('slide');
+            $images = explode("|",$good->img_slide);
+            unset($images[array_search($slide, $images)]);
+            $this->imageRepositories->deleteImg($slide,Goods::GOOD_IMG . $good->id . '/');
+            if($images) {
+                $good->img_slide = implode("|", $images);
+            } else {
+                $good->img_slide = NULL;
+            }
+            $good->update();
+        }
+
+        return response()->json(['msg' => 'ok'],200);
     }
     
 }

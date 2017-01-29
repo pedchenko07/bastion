@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{url('backend/style.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url('backend/colpick.css')}}" />
     <script type="text/javascript" src="{{url('backend/js/ckeditor/ckeditor.js')}}"></script>
@@ -70,5 +71,6 @@
         @yield('content')
     @endif
 
+    @yield('js')
 </body>
 </html>

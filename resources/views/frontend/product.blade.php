@@ -37,11 +37,17 @@
                                 class="pi-title"
                                 src="{{ asset(\App\Models\Goods::GOOD_IMG) . $good->id . '/' . explode("|", $good->img_slide)[0]}}"
                                 fullsize="{{ asset(\App\Repositories\ImageRepositories::FULLSIZE) . '/' . explode("|", $good->img_slide)[0]}}"/>
-                        @else
+                        @elseif($good->img != 'no_image.jpg')
                             <img
                                 class="pi-title"
                                 src="{{ asset('frontend/img/productID_') . $good->id . '/' . $good->img}}"
                                 fullsize="{{ asset('frontend/img/fullsize') . '/' . $good->img}}"/>
+                        @else
+                            <img
+                                class="pi-title"
+                                src='{{ asset("frontend/img") . "/" . $good->img }}'
+                                fullsize="{{ asset('frontend/img/fullsize') . '/' . $good->img}}"
+                            />
                         @endif
                     </div>
                 </div>

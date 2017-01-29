@@ -128,6 +128,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post('add/{id?}',['as' => 'product.create', 'uses' => 'ProductController@create']);
             Route::post('add/{brandId}/{productId}', ['as' => 'product.update', 'uses' => 'ProductController@update']);
             Route::get('delete/{id}', ['as' => 'product.delete', 'uses' => 'ProductController@delete']);
+            Route::post('product/delete/img', ['as' => 'product.delete.img', 'uses' => 'ProductController@deleteImg']);
         });
         Route::get('settings', ['as' => 'settings.index', 'uses' => 'SettingsController@index']);
         Route::get('design', ['as' => 'settings.design', 'uses' => 'SettingsController@design']);

@@ -859,3 +859,8 @@ border-radius:3px;
 	border-spacing: 2px;
 	border-color: grey;
 }
+
+.good_img {
+	width: 75px;
+	border: solid 1px;
+}
