@@ -86,7 +86,13 @@
                 </tr>
                 <tr>
                     <td>Картинка товара:</td>
-                    <td><input type="file" name="baseimg" /></td>
+                    <td>
+                        @if(!isset($good) || $good->img == 'no_image.jpg')
+                            <input type="file" name="baseimg" />
+                        @else
+                            <img src="{{ asset("$good->img")}}" alt="{{ $good->name }}" class="good_img" data-id="{{ $good->id }}" id="goodImg">
+                        @endif
+                    </td>
                 </tr>
                 <tr>
                     <td>Краткое описание:</td>
@@ -116,7 +122,19 @@
                 </tr>
                 <tr>
                     <td>Картинки галереи:</td>
-                    {{--<td></td>--}}
+                    @if(isset($good->img_slide))
+                        <td>
+                            @foreach(explode("|", $good->img_slide) as $slide)
+                                <img
+                                    src="/{{ \App\Models\Goods::GOOD_IMG . $good->id . "/" . $slide}}"
+                                    alt="{{ $good->name }}"
+                                    class="good_img good_slide"
+                                    data-id="{{ $good->id }}",
+                                    data-slide="{{ $slide }}"
+                                >
+                            @endforeach
+                        </td>
+                    @endif
                 </tr>
                 <tr>
                     <td id="btnimg">
@@ -156,4 +174,46 @@
 
     </div> <!-- .content -->
 
+@endsection
+
+@section('js')
+    <script>
+        (function(){
+            $('#goodImg').on('click', function() {
+                var vm = $(this);
+                $.ajax({
+                    type : "POST",
+                    url : '{{ route('product.delete.img') }}',
+                    data : {
+                        _token :  $('meta[name="csrf-token"]').attr('content'),
+                        id : $(this).data('id'),
+                        flag : 1,
+                    },
+                    success : function(data) {
+                        vm.parent().append('<input type="file" name="baseimg" />');
+                        vm.remove();
+                    }
+                });
+            });
+        })();
+    </script>
+    <script>
+        (function(){
+            $('.good_slide').on('click', function() {
+                var vm = $(this);
+                $.ajax({
+                    type : "POST",
+                    url : "{{ route('product.delete.img') }}",
+                    data : {
+                        _token :  $('meta[name="csrf-token"]').attr('content'),
+                        id : $(this).data('id'),
+                        slide : $(this).data('slide')
+                    },
+                    success : function(data) {
+                        vm.remove();
+                    }
+                });
+            });
+        })();
+    </script>
 @endsection

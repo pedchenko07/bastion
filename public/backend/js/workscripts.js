@@ -66,37 +66,37 @@ $(document).ready(function(){
            $("#add").removeAttr("disabled");
         }
     });
-    // поля картинок галереи
-    
-    // удаление картинок
-    $(".delimg").on("click", function(){
-        var res = confirm("Подтвердите удаление");
-        if(!res) return false;
-        
-        var img = $(this).attr("alt"); // имя картинки
-        var rel = $(this).attr("rel"); // 0 - базовая картинка, 1 - картинка галереи
-        var goods_id = $("#goods_id").text(); // ID товара
-        $.ajax({
-            url: "./",
-            type: "POST",
-            data: {img: img, rel: rel, goods_id: goods_id},
-            success: function(res){
-                if(rel == 0){
-                    // базовая картинка
-                    $(".baseimg").fadeOut(500, function(){
-                        $(".baseimg").empty().fadeIn(500).html(res);
-                    });
-                }else{
-                    // картинка галереи
-                    $(".slideimg").find("img[alt='" + img + "']").hide(500);
-                }
-            },
-            error: function(){
-                alert("Error");
-            }
-        });
-    });
-    // удаление картинок
+    // // поля картинок галереи
+    //
+    // // удаление картинок
+    // $(".delimg").on("click", function(){
+    //     var res = confirm("Подтвердите удаление");
+    //     if(!res) return false;
+    //
+    //     var img = $(this).attr("alt"); // имя картинки
+    //     var rel = $(this).attr("rel"); // 0 - базовая картинка, 1 - картинка галереи
+    //     var goods_id = $("#goods_id").text(); // ID товара
+    //     $.ajax({
+    //         url: "./",
+    //         type: "POST",
+    //         data: {img: img, rel: rel, goods_id: goods_id},
+    //         success: function(res){
+    //             if(rel == 0){
+    //                 // базовая картинка
+    //                 $(".baseimg").fadeOut(500, function(){
+    //                     $(".baseimg").empty().fadeIn(500).html(res);
+    //                 });
+    //             }else{
+    //                 // картинка галереи
+    //                 $(".slideimg").find("img[alt='" + img + "']").hide(500);
+    //             }
+    //         },
+    //         error: function(){
+    //             alert("Error");
+    //         }
+    //     });
+    // });
+    // // удаление картинок
 	
     
     //сортировка страниц
