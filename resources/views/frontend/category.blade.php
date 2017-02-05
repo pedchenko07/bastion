@@ -32,6 +32,13 @@
                 <div class="product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="product-thumb product-category">
                             <div class="image">
+                                @if($good->sale == 1)
+                                    <img src="{{ asset('frontend/img/menu-sale.png') }}" alt="" class="marker">
+                                @elseif($good->hits == 1)
+                                    <img src="{{ asset('frontend/img/menu-top.png') }}" alt="" class="marker">
+                                @elseif($good->new)
+                                    <img src="{{ asset('frontend/img/menu-new.png') }}" alt="" class="marker">
+                                @endif
                                 <a class="lazy lazy-loaded" style="padding-bottom: 100%" href="{{ route('item.index',$good->id) }}">
                                     <img alt="" title="" class="img-responsive" src="{{$good->img !== 'no_image.jpg' ? asset(\App\Models\Goods::GOOD_IMG . $good->id . '/' . $good->img) : asset(\App\Repositories\ImageRepositories::PATH_IMG . $good->img)}}">
                                 </a>
