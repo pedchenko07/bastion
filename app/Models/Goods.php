@@ -40,6 +40,6 @@ class Goods extends Model
 
     public static function getGoodsByBrandIdsOn($ids)
     {
-        return self::whereIn('brand_id',$ids)->whereVisible(self::VISIBLE)->get();
+        return self::whereIn('brand_id',$ids)->whereVisible(self::VISIBLE)->where('no_goods', 0)->get();
     }
 }
