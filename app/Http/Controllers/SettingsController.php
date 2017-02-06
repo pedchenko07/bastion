@@ -88,11 +88,12 @@ class SettingsController extends Controller
     public function oplataNew(Request $request)
     {
         $name = $request->input('name');
+        $comment = $request->input('comment', null);
         if (strlen($name) == 0) {
             Session::flash('error','Поле название не должно быть пустым');
             redirect()->route('settings.oplata');
         }
-        Oplata::createNew(['name' => $name]);
+        Oplata::createNew(['name' => $name, 'comment' => $comment]);
         return redirect()->route('settings.index');
     }
 
@@ -106,13 +107,15 @@ class SettingsController extends Controller
     public function oplataUpdate(Request $request, $id)
     {
         $name = $request->input('name');
+        $comment = $request->input('comment', null);
         if (strlen($name) == 0) {
             Session::flash('error','Поле название не должно быть пустым');
             redirect()->route('settings.oplata');
         }
         Oplata::updateById([
             'name'  => $name,
-            'id'    => $id
+            'id'    => $id,
+            'comment' => $comment
         ]);
         return redirect()->route('settings.index');
     }
