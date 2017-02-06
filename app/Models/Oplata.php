@@ -29,11 +29,11 @@ class Oplata extends Model
 
     public static function updateById(array $data)
     {
-        return self::whereId($data['id'])->update(['name' => $data['name']]);
+        return self::whereId($data['id'])->update(['name' => $data['name'], 'comment' => $data['comment']]);
     }
 
     public static function getById($id)
     {
-        return self::select('id', 'name')->find($id);
+        return self::select('id', 'name', 'comment')->find($id);
     }
 }

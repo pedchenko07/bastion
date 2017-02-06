@@ -94,7 +94,7 @@
                                             <label for="oplata" class="control-label">Тип оплаты</label>
                                             <select name="oplata" class="form-control">
                                                 @foreach($oplata as $item)
-                                                <option value="{{$item->id}}" {{old('oplata') == $item->id?'selected':''}}>{{$item->name}}</option>
+                                                <option data-description="{{$item->comment}}" value="{{$item->id}}" {{old('oplata') == $item->id?'selected':''}}>{{$item->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -103,7 +103,25 @@
                                                 <p>Извините, на сайте недоступны способы оплаты!</p>
                                             </div>
                                         @endif
+
+                                        <script>
+                                            $('[name=oplata]').on('change', function(){
+                                                var self = $(this),
+                                                        value = self.val();
+                                                var selectedItem = self.find("[value="+value+"]").data('description');
+                                                var arr = selectedItem.split('\n');
+                                                $('#comment-box').text('');
+                                                var res = '';
+                                                for(var i = 0; i < arr.length; i++){
+                                                    res += '<p>'+arr[i]+'</p>';
+                                                }
+                                                $('#comment-box').html(res);
+                                            });
+                                        </script>
                                     </fieldset>
+                                    <div>
+                                        <p id="comment-box"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
