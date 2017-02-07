@@ -14,6 +14,7 @@
 Route::group(['prefix' => '/'], function() {
     Route::get('/', ['as' => 'site.index', 'uses' => 'SiteController@index']);
     Route::get('page/{id}', ['as' => 'site.page', 'uses' => 'SiteController@page']);
+    Route::get('search', ['as' => 'search', 'uses' => 'SiteController@search']);
 
     Route::get('/category', function() {
         return view('frontend.category');

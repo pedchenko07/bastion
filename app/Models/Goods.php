@@ -42,4 +42,9 @@ class Goods extends Model
     {
         return self::whereIn('brand_id',$ids)->whereVisible(self::VISIBLE)->where('no_goods', 0)->get();
     }
+
+    public static function getSearch($search)
+    {
+        return self::where('name', 'like', '%' .$search .'%')->get();
+    }
 }

@@ -20,7 +20,7 @@
                         <img src="" alt="Logotip">
                     </a>
                 </div>
-                <form method="GET" class="search-form">
+                <form method="GET" class="search-form" action="{{ route('search') }}">
                     <input type="hidden" name="view" value="search" />
                     <div id="search" class="search">
                         <input id="quickquery" type="text" name="search" placeholder="Что вы хотите купить?" />
