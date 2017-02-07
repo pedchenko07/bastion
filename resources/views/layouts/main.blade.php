@@ -13,35 +13,9 @@
 <body class="common-home">
 <div class="wrapper-message" style="display: none;"></div>
 @include('frontend.modal.cart-message')
-{{--<div class="swipe">--}}
-    {{--<div class="swipe-menu">--}}
-        {{--<ul>--}}
-            {{--<li><a href="#" title="Корзина"><i class="material-icons">add_shopping_cart</i></i><span>Корзина</span></a> </li>--}}
-            {{--<li><a href="#" title="Оформление заказа"><i class="fa fa-share"></i><span>Оформление заказа</span></a></li>--}}
-        {{--</ul>--}}
-        {{--<ul class="foot">--}}
-            {{--<li><a href="#">O нас</a></li>--}}
-            {{--<li><a href="#">Информация о доставке</a></li>--}}
-            {{--<li><a href="#">Политика конфиденциальности</a></li>--}}
-            {{--<li><a href="#">Сроки и условия</a></li>--}}
-        {{--</ul>--}}
-        {{--<ul class="foot foot-1">--}}
-            {{--<li><a href="#">Contact Us</a> </li>--}}
-            {{--<li><a href="#">Returns</a> </li>--}}
-            {{--<li><a href="#">Site Map</a></li>--}}
-        {{--</ul>--}}
-        {{--<ul class="foot foot-2">--}}
-            {{--<li><a href="#">Производитель:</a></li>--}}
-            {{--<li><a href="#">Gift Vouchers</a></li>--}}
-            {{--<li><a href="#">Affiliates</a></li>--}}
-            {{--<li><a href="#">Specials</a></li>--}}
-        {{--</ul>--}}
-        {{--<ul class="foot foot-3">--}}
-            {{--<li><a href="#">История заказов</a></li>--}}
-            {{--<li><a href="#">Newsletter</a></li>--}}
-        {{--</ul>--}}
-    {{--</div>--}}
-{{--</div>--}}
+
+@include('frontend.mobile.swipe-menu')
+
 <div id="page">
     <div class="shadow"></div>
     <div class="toprow-1">

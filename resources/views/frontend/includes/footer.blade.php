@@ -10,8 +10,10 @@
                     <h5>Категории</h5>
                     <ul class="list-unstyled">
 
-                        <li><a href="?view=cat&amp;category="></a></li>
-
+                        {{--<li><a href=""></a></li>--}}
+                        @foreach($brands as $brand)
+                            <li><a href="{{ route('site.category',$brand->id) }}">{{ $brand->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -19,21 +21,19 @@
                 <div class="footer_box">
                     <h5>Служба поддержки</h5>
                     <ul class="list-unstyled">
-                        <li><a href="?view=reviews">Отзывы о сайте</a></li>
-                        <li><a href="?view=contacts">Контакты</a></li>
-
-                        <li><a href="?view=page&page_id="></a></li>
-
+                        <li><a href="{{ route('site.reviews.index') }}">Отзывы о сайте</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        {{--<li><a href=""></a></li>--}}
                     </ul>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="footer_box">
-                    <h5>Полезная инфомрация</h5>
+                    <h5>Инфомрация</h5>
                     <ul class="list-unstyled">
-
-                        <li><a href="?view=page&page_id="></a></li>
-
+                        @foreach($pages as $page)
+                            <li><a href="{{ route('site.page', $page->id) }}">{{ $page->title }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -42,7 +42,7 @@
     </div>
     <div class="copyright">
         <div class="container">
-            kobra1.com.ua &copy; 2015
+            bastion.loc &copy; 2017
         </div>
     </div>
 </footer>
