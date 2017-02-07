@@ -17,10 +17,10 @@
             <div class="col-sm-12 block-logo">
                 <div id="logo" class="logo">
                     <a href="/">
-                        <p>123</p>
+                        <img src="" alt="Logotip">
                     </a>
                 </div>
-                <form method="GET" class="search-form">
+                <form method="GET" class="search-form" action="{{ route('search') }}">
                     <input type="hidden" name="view" value="search" />
                     <div id="search" class="search">
                         <input id="quickquery" type="text" name="search" placeholder="Что вы хотите купить?" />
@@ -55,7 +55,7 @@
                             <li><a href="{{ route('site.page', $page->id) }}">{{ $page->title }}</a></li>
                             @endforeach
                             <li><a href="{{ route('site.reviews.index') }}">Отзывы о сайте</a></li>
-                            <li><a href="?view=contacts">Контакты</a></li>
+                            <li><a href="#">Контакты</a></li>
                             <li class="li-cart"><i class="material-icons">shopping_cart</i>
                                 <a href="{{route('cart.index')}}">
                                     <strong>Корзина</strong>

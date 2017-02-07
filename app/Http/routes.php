@@ -14,6 +14,7 @@
 Route::group(['prefix' => '/'], function() {
     Route::get('/', ['as' => 'site.index', 'uses' => 'SiteController@index']);
     Route::get('page/{id}', ['as' => 'site.page', 'uses' => 'SiteController@page']);
+    Route::get('search', ['as' => 'search', 'uses' => 'SiteController@search']);
 
     Route::get('/category', function() {
         return view('frontend.category');
@@ -172,8 +173,8 @@ Route::get('/home', 'HomeController@index');
 /* View Composer Here */
 
 View::composer('frontend.composers.metrics', 'App\Http\ViewComposers\MetricsComposer');
-View::composer(['frontend.composers.box-category', 'admin.includes.leftbar'],
+View::composer(['frontend.composers.box-category', 'admin.includes.leftbar','frontend.includes.footer'],
     'App\Http\ViewComposers\BrandsComposer');
-View::composer('frontend.includes.header', 'App\Http\ViewComposers\HeaderComposer');
+View::composer(['frontend.includes.header','frontend.mobile.swipe-menu','frontend.includes.footer'], 'App\Http\ViewComposers\HeaderComposer');
 View::composer('frontend.includes.img_slider', 'App\Http\ViewComposers\ImgSliderComposer');
 View::composer('frontend.includes.video_slider', 'App\Http\ViewComposers\VideoSliderComposer');

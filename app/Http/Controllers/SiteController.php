@@ -70,4 +70,12 @@ class SiteController extends Controller
         
         return view('frontend.category',$this->data);
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $this->data['goods'] = Goods::getSearch($search);
+
+        return view('frontend.search',$this->data);
+    }
 }
