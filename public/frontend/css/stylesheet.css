@@ -4858,3 +4858,8 @@ input#input-coupon {
     left: 0;
     z-index: 2;
 }
+.head-power-text {
+    font-size: 30px;
+    line-height: 24px;
+    font-weight: bold;
+}
