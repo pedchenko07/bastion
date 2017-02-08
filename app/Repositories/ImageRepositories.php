@@ -31,8 +31,8 @@ class ImageRepositories implements Imageable
         } elseif($flag == 1) {
             $img->resize(200, 200)->save(public_path($path) . '/' . $fileName);
         } else {
-            $img->save(public_path(self::FULLSIZE . '/' . $fileName));
-            $img->resize(400, 400)->save(public_path($path) . '/' . $fileName);
+            $img->resize(1200,500)->save(public_path(self::FULLSIZE . '/' . $fileName));
+            $img->resize(400, 250)->save(public_path($path) . '/' . $fileName);
         }
 
         return $fileName;
