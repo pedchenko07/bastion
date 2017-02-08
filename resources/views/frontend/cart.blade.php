@@ -120,7 +120,7 @@
                                         </script>
                                     </fieldset>
                                     <div>
-                                        <p id="comment-box"></p>
+                                        <p id="comment-box" class="head-power-text"></p>
                                     </div>
                                 </div>
                             </div>
