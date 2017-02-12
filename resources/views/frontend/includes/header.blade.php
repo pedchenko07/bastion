@@ -54,6 +54,7 @@
                             @foreach($pages as $page)
                             <li><a href="{{ route('site.page', $page->id) }}">{{ $page->title }}</a></li>
                             @endforeach
+                            <li><a href="{{ route('site.news.index') }}">Новости</a></li>
                             <li><a href="{{ route('site.reviews.index') }}">Отзывы о сайте</a></li>
                             <li><a href="?view=contacts">Контакты</a></li>
                             <li class="li-cart"><i class="material-icons">shopping_cart</i>

@@ -50,7 +50,7 @@ Route::group(['prefix' => 'reviews'], function() {
     Route::get('/', ['as' => 'site.reviews.index', 'uses' => 'SiteController@reviews']);
     Route::post('/', ['as' => 'site.reviews.save', 'uses' => 'SiteController@reviewsSave']);
 });
-
+Route::get('/news', ['as' => 'site.news.index', 'uses' => 'NewsController@site']);
 
 Route::auth();
 
