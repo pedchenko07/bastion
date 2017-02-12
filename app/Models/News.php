@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
@@ -31,5 +32,10 @@ class News extends Model
     public static function updateNews($data, $id)
     {
         return self::where('id', $id)->update($data);
+    }
+
+    public function getDate()
+    {
+        return Carbon::parse($this->date)->format('d-m-Y');
     }
 }

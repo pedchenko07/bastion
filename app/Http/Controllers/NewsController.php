@@ -27,7 +27,7 @@ class NewsController extends Controller
     public function addNews()
     {
         $data['title'] = '';
-        $data['keywords'] = '';
+        $data['date'] = '';
         $data['description'] = '';
         $data['anons'] = '';
         $data['text'] = '';
@@ -40,18 +40,17 @@ class NewsController extends Controller
     public function saveNews(Request $request)
     {
         $data['title'] = $request->input('title');
-        $data['keywords'] = $request->input('keywords');
-        $data['description'] = $request->input('description');
-        $data['anons'] = $request->input('anons');
+        $data['date'] = $request->input('date');
+        $data['keywords'] = $request->input('keywords', '');
+        $data['description'] = $request->input('description', '');
+        $data['anons'] = $request->input('anons', '');
         $data['text'] = $request->input('text');
 
-        if ($data['title'] == '' || $data['keywords'] == '' || $data['anons'] == '' ||
-        $data['description'] == '' || $data['text'] == '') {
+        if ($data['title'] == '' || $data['date'] == '' || $data['text'] == '') {
             $data['error'] = 'Вы не заполнили форму';
             $data['brands'] = $this->data['brands'];
             return view('admin.news.addNews', $data);
         }
-        $data['date'] = Carbon::now();
 
         if(News::create($data)){
             Session::flash('success', 'Новость добавлена успешно');
@@ -80,6 +79,7 @@ class NewsController extends Controller
         $data['keywords'] = $result->keywords;
         $data['description'] = $result->description;
         $data['anons'] = $result->anons;
+        $data['date'] = $result->date;
         $data['text'] = $result->text;
         $data['error'] = false;
         $data['id'] = $id;
@@ -91,18 +91,17 @@ class NewsController extends Controller
     {
         $id = $request->input('id');
         $data['title'] = $request->input('title');
-        $data['keywords'] = $request->input('keywords');
-        $data['description'] = $request->input('description');
-        $data['anons'] = $request->input('anons');
+        $data['keywords'] = $request->input('keywords', '');
+        $data['description'] = $request->input('description', '');
+        $data['anons'] = $request->input('anons', '');
+        $data['date'] = $request->input('date');
         $data['text'] = $request->input('text');
 
-        if ($data['title'] == '' || $data['keywords'] == '' || $data['anons'] == '' ||
-            $data['description'] == '' || $data['text'] == '') {
+        if ($data['title'] == '' || $data['date'] == '' || $data['text'] == '') {
             $data['error'] = 'Вы не заполнили форму';
             $data['brands'] = $this->data['brands'];
             return view('admin.news.addNews', $data);
         }
-        $data['date'] = Carbon::now();
 
         if(News::updateNews($data, $id)) {
             Session::flash('success', 'Новость обновлена успешно');
@@ -116,5 +115,15 @@ class NewsController extends Controller
     {
         $data['brands'] = $this->data['brands'];
         return view('admin.news.sliders', $data);
+    }
+
+    public function site()
+    {
+        $data['news'] = News::where('date', '<', Carbon::now())
+            ->limit(5)
+            ->orderBy('date', 'DESC')
+            ->get();
+        $data['brands'] = $this->data['brands'];
+        return view('frontend.news', $data);
     }
 }

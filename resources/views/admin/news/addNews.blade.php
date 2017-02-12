@@ -20,26 +20,6 @@
                     <td><input class="head-text" type="text" name="title" value="{{$title}}" /></td>
                 </tr>
                 <tr>
-                    <td>Ключевые слова:</td>
-                    <td><input class="head-text" type="text" name="keywords" value="{{$keywords}}" /></td>
-                </tr>
-                <tr>
-                    <td>Описание:</td>
-                    <td><input class="head-text" type="text" name="description" value="{{$description}}" /></td>
-                </tr>
-                <tr>
-                    <td>Анонс новости:</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <textarea id="editor1" class="full-text" name="anons">{!! $anons !!}</textarea>
-                        <script type="text/javascript">
-                            CKEDITOR.replace( 'editor1' );
-                        </script>
-                    </td>
-                </tr>
-                <tr>
                     <td>Текст новости:</td>
                     <td></td>
                 </tr>
@@ -50,6 +30,10 @@
                             CKEDITOR.replace( 'editor2' );
                         </script>
                     </td>
+                </tr>
+                <tr>
+                    <td class="add-edit-txt">Дата новости:</td>
+                    <td><input class="head-text" type="date" name="date" value="{{$date}}" /></td>
                 </tr>
             </table>
 
